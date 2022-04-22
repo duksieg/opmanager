@@ -258,7 +258,7 @@ function Gmap() {
                         <button type='submit' onClick={clearedFiltered} className="btn btn-dark">Clear</button>
                     </div>
                     <div className='d-flex justify-content-center'>
-                        <Link className='btn btn-dark mt-3' to="/opmanager" > หน้าแรก</Link>
+                        <Link className='btn btn-dark mt-3' to="/" > หน้าแรก</Link>
                         </div>
                 </div>
                 <div className='col'>

@@ -21,7 +21,7 @@ class CreateOp extends React.Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-        fetch('https://gunman.csd.go.th/create-rtdb', {
+        fetch('https://127.0.0.1/create-rtdb', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
@@ -42,6 +42,7 @@ class CreateOp extends React.Component {
     render() {
         return (
             <div className="container-fluid vh-100 homepage text-white">
+            <Navigation></Navigation>
                 {this.state.alertexist ? <Alert className="mt-5 text-center" onClose={() => this.setState({ alertexist: false })} variant="danger" dismissible>{this.state.message}</Alert> : ''}
                 {this.state.alertsuccess ? <Alert className="mt-5 text-center" onClose={() => this.setState({ alertsuccess: false })} variant="success" dismissible>สร้างโอเปอเรชั่นเรียบร้อย</Alert> : ''}
 
