@@ -18,7 +18,7 @@ class ManageOP extends React.Component {
 
     retrievedata() {
         let opName = sessionStorage.getItem('opName')
-        let url = new URL('http://localhost:3000/retrievedata')
+        let url = new URL('https://gunman.csd.go.th/retrievedata')
         url.search = new URLSearchParams({
             opName: opName
         })

@@ -21,7 +21,7 @@ class CreateOp extends React.Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-        fetch('http://localhost:3000/create-rtdb', {
+        fetch('https://gunman.csd.go.th/create-rtdb', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)

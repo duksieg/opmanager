@@ -2,6 +2,7 @@
   "name": "operationmanager",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gunman.csd.go.th/opmanager",
   "dependencies": {
     "@react-google-maps/api": "^2.8.1",
     "@testing-library/jest-dom": "^5.16.2",
@@ -18,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT=3000 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
