@@ -16,18 +16,17 @@ import Tracert from './routes/Tracert'
 import Gmap from './routes/Maptracert'
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename='/opmanager'>
     <Routes>
-      <Route path="opmanager/" element={<App />}/>
-        <Route path="opmanager/createop" element={<CreateOp />} />
-        <Route path="opmanager/loginop" element={<LoginOp />} />
-        <Route path="opmanager/manageop" element={<ManageOP />} />
-        <Route path="opmanager/tracert" element={<Tracert />} />
-        <Route path="opmanager/tracert/:opname" element={<Gmap />} />
+      <Route path="/" element={<App />}/>
+        <Route path="createop" element={<CreateOp />} />
+        <Route path="loginop" element={<LoginOp />} />
+        <Route path="manageop" element={<ManageOP />} />
+        <Route path="tracert" element={<Tracert />} />
+        <Route path="tracert/:opname" element={<Gmap />} />
         
     </Routes>
-  </BrowserRouter>
-  ,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
