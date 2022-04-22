@@ -2,16 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter, Routes,
+  Route,
+  Outlet
+} from "react-router-dom";
+
+import Navigation from './components/Navigation'
+import CreateOp from './routes/CreateOp'
+import LoginOp from './routes/LoginOp'
+import ManageOP from './routes/ManageOp'
+import Tracert from './routes/Tracert'
+import Gmap from './routes/Maptracert'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="opmanager/" element={<App />}/>
+        <Route path="opmanager/createop" element={<CreateOp />} />
+        <Route path="opmanager/loginop" element={<LoginOp />} />
+        <Route path="opmanager/manageop" element={<ManageOP />} />
+        <Route path="opmanager/tracert" element={<Tracert />} />
+        <Route path="opmanager/tracert/:opname" element={<Gmap />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+    </Routes>
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
