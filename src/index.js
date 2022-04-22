@@ -18,7 +18,7 @@ import Gmap from './routes/Maptracert'
 ReactDOM.render(
   <BrowserRouter basename='/opmanager'>
     <Routes>
-      <Route path="/" element={<App />}/>
+      <Route path="/opmanager" element={<App />}/>
         <Route path="createop" element={<CreateOp />} />
         <Route path="loginop" element={<LoginOp />} />
         <Route path="manageop" element={<ManageOP />} />

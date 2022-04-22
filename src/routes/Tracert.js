@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import Navigation from '../components/Navigation'
-import { getDatabase, onValue, ref, get, off } from "firebase/database"
+import { getDatabase, onValue, ref, off } from "firebase/database"
 
 const firebaseConfig = {
     apiKey: "AIzaSyCXGu-CH89dMLCWH7tugLG0Vb51wPaoA_c",
