@@ -24,14 +24,7 @@ ReactDOM.render(
         <Route path="opmanager/manageop" element={<ManageOP />} />
         <Route path="opmanager/tracert" element={<Tracert />} />
         <Route path="opmanager/tracert/:opname" element={<Gmap />} />
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
+        
     </Routes>
   </BrowserRouter>
   ,
