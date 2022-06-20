@@ -19,6 +19,7 @@ export default function Navlink() {
                                     <Nav.Link className='text-light' href="/opmanager/createop">สร้างโอเปอเรชั่น</Nav.Link>
                                     <Nav.Link className='text-light' href="/opmanager/manageop">จัดการโอเปอเรชั่น</Nav.Link>
                                     <Nav.Link className='text-light' href="/opmanager/tracert">ติดตามเป้าหมาย</Nav.Link>
+                                    <Nav.Link className='text-light' href="/opmanager/dashboard">ผลการปฏิบัติ</Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Container>

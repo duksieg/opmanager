@@ -3,23 +3,15 @@ import { Link } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import Navigation from '../components/Navigation'
 import { getDatabase, onValue, ref, off } from "firebase/database"
+import { firebaseConfig } from "../utilities/config";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCXGu-CH89dMLCWH7tugLG0Vb51wPaoA_c",
-    authDomain: "operation-333705.firebaseapp.com",
-    databaseURL: "https://operation-333705-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "operation-333705",
-    storageBucket: "operation-333705.appspot.com",
-    messagingSenderId: "995869264631",
-    appId: "1:995869264631:web:9331079e9606ef2644a1f2"
-};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 
 
-export default function Tracert() {
+export default function Tracert(props) {
     const [opname, setOpName] = useState([])
 
     function handleRawData(snapshort) {
@@ -27,8 +19,6 @@ export default function Tracert() {
     }
 
     useEffect(() => {
-
-
         const dbref = ref(db)
         onValue(dbref, (snapshot) => {
             let allop = Object.keys(snapshot.val())
@@ -59,7 +49,6 @@ export default function Tracert() {
         <Navigation></Navigation>
             <div className="mt-5 text-center justify-content-center w-50 m-auto ">
                 {opname == null ? 'loading..' : renderop()}
-
             </div>
 
         </div>

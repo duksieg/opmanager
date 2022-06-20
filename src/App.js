@@ -2,7 +2,6 @@ import './App.css';
 import 'react-bootstrap/dist/react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import Navigation from './components/Navigation'
-import { Outlet } from 'react-router-dom';
 
 function App() {
   return (

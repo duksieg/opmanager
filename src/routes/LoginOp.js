@@ -22,7 +22,7 @@ class LoginOp extends React.Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-        fetch('https://127.0.0.1/loginOp', {
+        fetch('https://gunman.csd.go.th/loginOp', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
