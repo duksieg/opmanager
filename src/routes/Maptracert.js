@@ -1,6 +1,6 @@
 /* global google */
 import React, { useState, useEffect } from 'react'
-import { GoogleMap, useLoadScript, Marker, Polyline, DistanceMatrixService, Circle } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, Polyline, Circle } from '@react-google-maps/api';
 import { Link, useParams } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, query, orderByChild, onValue } from "firebase/database"

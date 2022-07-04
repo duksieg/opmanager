@@ -17,19 +17,19 @@ export const getBaseArea = async (baseobj) => {
                 }
             ]
         }
-        let response = await fetch(geolocated, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(reqGeo)
-        })
-        if (response.status == 200) {
-            let result = await response.json()
-            console.log(result)
-            return result.accuracy
-        }
-        else return 1000
+        // let response = await fetch(geolocated, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(reqGeo)
+        // })
+        // if (response.status == 200) {
+        //     let result = await response.json()
+        //     console.log(result)
+        //     return result.accuracy
+        // }
+         return 1000
     } else {
         return 1000
     }

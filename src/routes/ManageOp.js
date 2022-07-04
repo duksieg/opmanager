@@ -1,8 +1,8 @@
 import React from "react";
 import LoginOp from "./LoginOp";
-import Persontotel from '../components/Persontotel'
-import BaseMapping from '../components/BaseMapping'
-import BaseJustify from "../components/BaseJustify";
+import Persontotel from '../components/Manage/Persontotel'
+import BaseMapping from '../components/Manage/BaseMapping'
+import BaseJustify from "../components/Manage/BaseJustify";
 class ManageOP extends React.Component {
 
     constructor(props) {
@@ -12,22 +12,7 @@ class ManageOP extends React.Component {
 
     }
 
-    // retrievedata() {
-    //     let opName = sessionStorage.getItem('opName')
-    //     let url = new URL('https://gunman.csd.go.th/retrievedata')
-    //     url.search = new URLSearchParams({
-    //         opName: opName
-    //     })
 
-    //     fetch(url).then(response => response.json())
-    //         .then(data => {
-    //             if (data.length != 0) {
-    //                 this.setState({ data: data,selectTarget:data[0] })
-    //             }
-    //         })
-    // }
-
-    
 
   
     componentDidMount() {
