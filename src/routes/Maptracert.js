@@ -6,15 +6,14 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, query, orderByChild, onValue } from "firebase/database"
 import { exportIcon, exportETC } from '../utilities/markericon'
 import * as util from '../utilities/util'
-import { firebaseConfig, matchTel, circleoption } from '../utilities/config'
+import { firebasedb, matchTel, circleoption } from '../utilities/config'
 
 const google = window.google != null ? window.google : ''
 
 
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const db = getDatabase(app)
+const db = firebasedb
 
 const containerStyle = {
     minHeight: '800px',

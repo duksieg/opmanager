@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { initializeApp } from "firebase/app";
 import Navigation from '../components/Navigation'
-import { getDatabase, onValue, ref, off } from "firebase/database"
-import { firebaseConfig } from "../utilities/config";
+import {  onValue, ref, off } from "firebase/database"
+import { firebasedb } from "../utilities/config";
 
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const db = getDatabase(app)
+const db = firebasedb
 
 
 export default function Tracert(props) {

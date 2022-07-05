@@ -57,14 +57,26 @@ export default function Itemreport(props) {
         }
     }, [props.itemdata,evidenceList])
 
+    const rowItem =()=>{
+        return(
+        <div className="row mt-4" key={index} >
+        <div className="col text-center">
+            <input type='text' className="" value={index} disabled />
+        </div>
+        <div className="col">
+            <input className="form-control" list={'datalistOptions' + index} name="itemname" defaultValue={element.name} placeholder="Type to search..." onChange={(e) => handleValueItem(e, index)} />
+            <datalist id={'datalistOptions' + index}>
+                {evidenceList.length == 0 ? '' : evidenceList}
+            </datalist>
+        </div>
+        <div className="col">
+            <input type='number' className="form-control" name="itemvalue" defaultValue={element.value} onChange={(e) => handleValueItem(e, index)}></input>
+        </div>
+    </div>)
+    }
+
     const handleValueItem = (event,showindex) => {
-        
-        let indexreqlist = showindex-1
-        const target = event.target
-        const value = target.value
-        let item = ({ [target.name]: value })
-        console.log(indexreqlist)
-        console.log(item)
+        console.log(itemList[index])
     }
 
     const handleAddItem = () => {

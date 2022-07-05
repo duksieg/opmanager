@@ -10,10 +10,10 @@ import {
 import CreateOp from './routes/CreateOp'
 import LoginOp from './routes/LoginOp'
 import ManageOP from './routes/ManageOp'
-import Tracert from './routes/Tracert'
 import Gmap from './routes/Maptracert'
 import Dashboard from './routes/Dashboard'
-import Reporter from './routes/Reporter';
+import Reporter from './routes/Reporter'
+import Tracert from './routes/Tracert'
 
 ReactDOM.render(
   <BrowserRouter basename='/opmanager'>
