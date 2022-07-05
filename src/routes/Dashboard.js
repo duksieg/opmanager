@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app"
 import { getDatabase, ref, onValue } from "firebase/database"
 import { useEffect, useState } from "react"
 import { firebaseConfig } from '../utilities/config'
-import Board from "../components/dashboard/board_comp"
+import Board from "../components/db/board_comp"
 
 
 // Initialize Firebase
