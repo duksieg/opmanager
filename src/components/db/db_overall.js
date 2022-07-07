@@ -4,8 +4,10 @@ import Chart from './db_chart'
 import Pg_bar from './db_bar';
 import Card_com from './card_comp';
 import Modal_c from './db_modal';
+// import Modal_csl from './db_modal_csl';
 import Rowstat from './db_rowstat_comp';
 import Card_item from './db_card_item';
+import Card_stat from './card_stat';
 const Db_overall = (props) => {
   const [modalShow, setModalShow] = useState(false);
 
@@ -61,17 +63,21 @@ const Db_overall = (props) => {
     console.log("sent_station_arr:", sent_station)
 
 
-    const data0 = [{ color: { background: "#DFDED8" }, title: "จุดตรวจค้น", value: arr_target_search.length }, { color: { background: "#DFDED8" }, title: "เป้าหมาย", value: 16 }]
+    // const data0 = [{ color: { background: "#DFDED8" }, title: "จุดตรวจค้น", value: arr_target_search.length }, { color: { background: "#DFDED8" }, title: "เป้าหมาย", value: 16 }]
 
-    const data1 = [{ color: { background: "#DFDED8" }, title: "จุดตรวจค้น", value: arr_target_search.length }, { color: { background: "#DFDED8" }, title: "เป้าหมาย", value: 16 },{ color: { color: "white", background: "#DFDED8" , marginTop: "10px" }, title: "จับกุมได้", value: catched.length }]
+    const data1 = [{ color: {color: "white", background: "#140E32" }, title: "สถานะการจับกุมเป้าหมาย"},
+     { color: { background: "#DFDED8" }, title: "เป้าหมาย", value: 16 },
+     { color: {  background: "#DFDED8" , marginTop: "10px" }, title: "จับกุมได้", value: catched.length },
+     {color: {color: "white", background: "#C1361E", marginTop: "10px" }, title: "ฉุกเฉิน", value: danger.length }]
 
     //old version use เริ่มตรวจค้น const data2=[{color:{background:"#90EFF9",marginTop:"10px"},title:"ปล่อยแถว",value:ready.length},{color:{background:"#F3FA50",marginTop:"10px"},title:"เริ่มตรวจค้น",value:start.length},{color:{background:"#F1C068",marginTop:"10px"},title:"ขณะตรวจค้น",value:current.length},{color:{background:"#66F530",marginTop:"10px"},title:"หลังตรวจค้น",value:end.length}]
     const data2 = [
+      { color: { background: "#DFDED8" }, title: "จุดตรวจค้น", value: arr_target_search.length },
       { color: { background: "#90EFF9"}, title: "ปล่อยแถว", value: ready.length },
       { color: { background: "#F1C068"}, title: "ขณะตรวจค้น", value: current.length },
       { color: { background: "#66F530" }, title: "หลังตรวจค้น", value: end.length },
-      { color: { color: "white", background: "#C1361E", marginTop: "10px" }, title: "ฉุกเฉิน", value: danger.length }]
-
+      ]
+      // { color: { color: "white", background: "#C1361E", marginTop: "10px" }, title: "ฉุกเฉิน", value: danger.length }
 
 
 
@@ -91,7 +97,7 @@ const labels = [
   'September',
   'October',
   'November',
-  'December',"มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+  // 'December',"มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
   ];
 const arr_data=labels.map((lb) => ({"label":lb,"value":Math.floor(Math.random() * 100)})).sort((a,b) =>  b.value-a.value )
 const arr_chart=arr_data.slice(0,6)
@@ -115,13 +121,13 @@ const arr_card=arr_data.slice(6)
               xs="auto"
               sm="auto"
               md="auto"
-              lg="6"
+              lg="5"
               style={{
                 display: "flex",
-                justifyContent: "center",
-                backgroundColor: "#560A04",
+                
+                backgroundColor: "#FAF6AD",
                 borderRadius:"100px",
-                padding:"3rem"
+                padding:"1rem"
               }}
             >
               {data2.map((elm) => {
@@ -133,23 +139,23 @@ const arr_card=arr_data.slice(6)
               xs="auto"
               sm="auto"
               md="auto"
-              lg="6"
+              lg="7"
               style={{
                 display: "flex",
                 justifyContent: "center",
-                backgroundColor: "#0E3E23",
+                backgroundColor: "#FAE5D3",
                 borderRadius:"100px",
-                padding:"3rem"
+                padding:"1rem"
                 
               }}
             >
-              <div>  </div>
+
               {data1.map((elm) => {
                 return <Rowstat {...elm} />;
               })}
             </Col>
           </Row>
-          <Row
+          {/* <Row
             style={{
               display: "flex",
               justifyContent: "center",
@@ -160,14 +166,14 @@ const arr_card=arr_data.slice(6)
               xs="auto"
               sm="auto"
               md="auto"
-              lg="6"
+              lg="5"
               style={{
                 display: "flex",
                 justifyContent: "center",
 
               }}
             >
-          <Alert   style={{ fontSize:"5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"3rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"3rem"}}>
+          <Alert   style={{ fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1rem"}}>
                             การตรวจยึดของกลาง
                     </Alert>
             </Col>
@@ -176,31 +182,31 @@ const arr_card=arr_data.slice(6)
               xs="auto"
               sm="auto"
               md="auto"
-              lg="6"
+              lg="7"
               style={{
                 display: "flex",
                 justifyContent: "center",
 
               }}
             >
-          <Alert   style={{ fontSize:"5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"3rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"3rem"}}>
-                            สถานะการจับกุมเป้าหมาย ปัจจุบัน
+          <Alert   style={{ fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1rem"}}>
+                            สถานะการจับกุมเป้าหมาย
                     </Alert>
 
             </Col>
-          </Row>
+          </Row> */}
 
 
 
           <Row
-            className="justify-content-md-center pt-4"
+
             style={{ backgroundColor:  "#13035A" }}
           >
             <Col
               xs="auto"
               sm="auto"
               md="auto"
-              lg="6"
+              lg="5"
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -208,18 +214,19 @@ const arr_card=arr_data.slice(6)
                 
               }}
             >
-              <Container fluid style={{ backgroundColor: "#140E32" }}>
+              <Container fluid >
                 <Row
                   style={{
                     display: "flex",
                     justifyContent: "center",
                     backgroundColor: "#F6EFDC" ,
-                    borderRadius:"30px"
+                    borderRadius:"30px",
+                    marginTop:"1rem"
                   }}
                 >
                   <Chart chart={arr_chart} card={arr_card} />
                 </Row>
-                <hr/>
+
                 <Row
                   style={{
                     display: "flex",
@@ -231,7 +238,7 @@ const arr_card=arr_data.slice(6)
                   {arr_card.map((elm) => {
           
           return (
-            <Col xs="3" md="3" lg="2"
+            <Col xs="3" md="2" lg="2"
             style={{
               display: "inline-flex",
               justifyContent: "center",
@@ -253,19 +260,22 @@ const arr_card=arr_data.slice(6)
             <Col
               xs="auto"
               sm="auto"
-              md="auto"
-              lg="6"
+              md="7"
+              lg="7"
+              xl="7"
               style={{
-                width: "50%",
+                
                 display: "flex",
-
-                backgroundColor: "#140E32",
+                borderRadius:"30px",
+                backgroundColor: "#FAE5D3",
+                marginTop:"1rem"
               }}
             >
               <Container fluid>
+                <Row>
                 {main_data.map((elm) => {
                   console.log("test elm" + elm.target);
-
+                  if(elm.target!="3A1-2" && elm.target!="3A1-4" && elm.target!="3A1-5" && elm.target !="2A6-2" && elm.target !="1A16-2" && elm.target !="2A17-2" )
                   return (
                     <Col
                       xs="3"
@@ -284,10 +294,80 @@ const arr_card=arr_data.slice(6)
                     </Col>
                   );
                 })}
+
+                </Row>
+                {/* <hr style={{color:"#FFFFFF",height:"2rem",borderWidth:"0",backgroundColor:"#FFFFFF",marginTop:"3rem"}}/> */}
+
+
+
+
+
+
               </Container>
             </Col>
           </Row>
+          <Row                   
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    backgroundColor: "#FAF6AD",
+                    borderRadius:"30px",
+                    marginTop:"1rem"
+                  }}>
+                <Col
+              xs="auto"
+              sm="auto"
+              md="1"
+              lg="1"
 
+            >
+          <Alert   style={{ justifyContent: "center",fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"30px", color: "#F6EFDC",marginTop:"6rem"}}>
+                            <div style={{display: "flex", justifyContent: "center"}}>สถานะ</div>
+                            <div style={{display: "flex", justifyContent: "center"}}>จุดตรวจค้น</div>
+                    </Alert>
+
+            </Col>
+            <Col
+              xs="auto"
+              sm="auto"
+              md="11"
+              lg="11"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+
+              }}
+            >
+              <Container fluid >
+              {main_data.map((elm) => {
+                console.log("test elm" + elm.target);
+
+                return (
+                  <Col
+                    xs="3"
+                    md="2"
+                    lg="1"
+
+                    style={{
+                      display: "inline-flex",
+                      justifyContent: "center",
+                    }}
+                    onClick={() => setModalShow([true, elm])}
+                  >
+                    <Card_stat atb={elm} />
+                  </Col>
+                );
+              })}
+
+
+              </Container>
+
+</Col>
+          </Row>
+
+
+
+          {/* <Modal_csl show={modalShow[0]} data={modalShow[1]} onHide={() => setModalShow(false)}/> */}
           <Modal_c
             show={modalShow[0]}
             data={modalShow[1]}

@@ -21,14 +21,14 @@ ChartJS.register(
     Legend,
     ChartDataLabels
   );
-ChartJS.defaults.font.size = "50rem";
+ChartJS.defaults.font.size = "25rem";
 ChartJS.defaults.font.weight = "bold";
 
 ChartJS.defaults.set('plugins.datalabels', {
     color: '#FE777B',
     font: {
         weight: 'bold',
-        size: '50rem',
+        size: '30rem',
       }
   });
 

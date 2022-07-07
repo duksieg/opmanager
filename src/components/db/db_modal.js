@@ -38,9 +38,9 @@ const Modal_c =(props)=> {
               <Modal 
                     {...props} 
                     animation={true} 
-                    size="lg"
-                    fullscreen="xxl"
-                   
+                    size="xl"
+
+                    dialogClassName="modal-90w"
     
                     >
                 <Modal.Header  closeButton>
@@ -55,18 +55,18 @@ const Modal_c =(props)=> {
                   <Container fluid>
                       <Row className="justify-content-md-center">
                           <Col xs="3" sm="3" md="3" lg="auto"  style={{display: "flex",justifyContent: "center"}}> 
-                              <Image src={in_data.pic_url.replace("file/d/","uc?id=")} style={{height:"100px"}}/>
+                              <Image src={in_data.pic_url.replace("file/d/","uc?id=")} style={{height:"10rem"}}/>
                           </Col>
-                          <Col xs="9" sm="9" md="9" lg="auto" style={{textAlign:"center",background:bg_color}} > 
+                          <Col xs="9" sm="9" md="9" lg="auto" style={{textAlign:"center",background:bg_color,fontSize:"1.5rem"}} > 
                               <div>{in_data.name_target}</div>
                               <div>{in_data.address}</div>
                               <div> <a href={in_data.link_map} target="_blank">แผนที่จุดตรวจค้น</a></div>
                               <div>สถานะการตรวจค้น: {in_data.stat}</div>
                           </Col>                    
                       </Row>
-                      <Row className="justify-content-md-center">
+                      <Row className="justify-content-md-center" style={{textAlign:"center",fontSize:"1.5rem"}}>
                       <Col sm="auto" md="auto" lg="auto"  className="justify-content-md-center"> 
-                      <Row className="justify-content-md-center" style={{textAlign:"center"}} >
+                      <Row className="justify-content-md-center"  >
                                                                         <Alert variant="info" className="mb-2">
                                                           <div style={{textAlign:"center"}}>
                                                             เป้าหมายตรวจค้น
