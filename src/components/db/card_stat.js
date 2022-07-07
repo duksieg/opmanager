@@ -21,19 +21,20 @@ const Card_stat=(elm)=>{
           default:
               bg_color="#6D6E70"
               }
-    const card_style={ width: '30rem',background:bg_color ,borderRadius:"30px",marginTop:"6rem"}
+    const card_style={ width: '20rem',background:bg_color ,borderRadius:"30px",marginTop:"1rem"}
     return (
     <Card style={card_style} >
       <Card.Body>
-      <Card.Img variant="top" src={elm.atb.pic_url.replace("file/d/","uc?export=view&id=")} style={{height:"15rem"}} />
+      {/* <Card.Img variant="top" src={elm.atb.pic_url.replace("file/d/","uc?export=view&id=")} style={{height:"15rem"}} />
       {elm.atb.current_check_list[0].stat =='พบ' ||elm.atb.stat =='end'?
       <div class="card-img-overlay">
          <Image src={'https://drive.google.com/uc?id=1T--5zy6QYKcFfOdw7Tlpj_Q1OVKtUeql'} style={{width:"10vh",marginTop:'1vh'}}/>
       </div>
-      :<></>}
+      :<></>} */}
       <Card.Footer style={{ textAlign: "center" ,borderRadius:"30px",background:"#B4B8C7"}}>
-      <Card.Text style={{textAlign:"center",fontSize:"2rem",fontWeight:"bold"}}>จุดตรวจค้นที่ {elm.atb.target_search} {elm.atb.target}</Card.Text>
-        <Card.Text style={{textAlign:"center",fontSize:"2rem",fontWeight:"bold"}}>{elm.atb.name_target}</Card.Text>
+      <Card.Text style={{textAlign:"center",fontSize:"1.5rem",fontWeight:"bold"}}>{elm.atb.target}</Card.Text>
+      {/*จุดตรวจค้นที่ {elm.atb.target_search} */}
+        {/* <Card.Text style={{textAlign:"center",fontSize:"1.5rem",fontWeight:"bold"}}>{elm.atb.name_target}</Card.Text> */}
 
       </Card.Footer>
 
