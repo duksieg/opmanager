@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-
+import { Bar } from 'react-chartjs-2';
 import cib from '../../images/cib.png'
-import Chart from "./db_chart";
+import {
+    Chart as ChartJS,
+} from 'chart.js';
+ChartJS.defaults.set('plugins.datalabels', {
+    color: '#FE777B',
+    font: {
+        weight: 'bold',
+        size: '40rem',
+    }
+});
 export default function DB_point_detail(props) {
 
     const [filelist, setFileList] = useState([])
@@ -14,7 +23,7 @@ export default function DB_point_detail(props) {
 
 
     useEffect(() => {
-
+        console.log(pointdata)
         if (pointdata.datasource == null) console.error('not get point data')
         else setDatasource(pointdata.datasource)
         const getImages = async () => {
@@ -26,11 +35,42 @@ export default function DB_point_detail(props) {
         getImages()
     }, [state])
 
-
+    const ChartJS = (setdata) => {
+        const label = setdata.map((ar) => ar.label);
+        const value = setdata.map((ar) => ar.value);
+        const options = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        font: {
+                            size: '10rem',
+                        },
+                    },
+                },
+                title: {
+                    display: false,
+                    text: "ตรวจยึดของกลาง",
+                },
+            },
+        };
+        const data = {
+            labels: label,
+            datasets: [
+                {
+                    display: false,
+                    label: "จำนวน",
+                    data: value,
+                    backgroundColor: "#140E32",
+                },
+            ],
+        };
+        return <Bar options={options} data={data} />
+    }
     const CardPoint = () => {
-        console.log(dataSource)
         return (
-            <div className="card mt-4 w-90" >
+            <div className="card mt-4 w-50" >
                 <div className="d-flex row">
                     <div className="col-md-2 align-self-center">
                         <img src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetImages/${opName}/18131231231.jpg`} class="card-img-top" style={{ textAlign: 'center', maxWidth: '200px' }}></img>
@@ -47,7 +87,7 @@ export default function DB_point_detail(props) {
                                 หัวหน้าชุด :
                             </div>
                             <div className="row">
-                                    {RenderListPDF()}
+                                {RenderListPDF()}
                             </div>
                         </div>
                     </div>
@@ -71,22 +111,22 @@ export default function DB_point_detail(props) {
         return renderimg
     }
 
-    const RenderItems = () =>{
+    const RenderItems = () => {
         let items = dataSource.items
         let dataset = []
-        if(Array.isArray(items)){
+        if (Array.isArray(items)) {
             Object.entries(items).forEach(element => {
-                const[index,itemObj] = element
+                const [index, itemObj] = element
                 const item = {
-                    label:itemObj.name,
-                    value:itemObj.value
+                    label: itemObj.name,
+                    value: itemObj.value
                 }
                 dataset.push(item)
             });
         }
 
-        return  <Chart chart={dataset} />
-       
+        return ChartJS(dataset)
+
     }
     const RenderListPDF = () => {
         let files = filelist
@@ -106,9 +146,9 @@ export default function DB_point_detail(props) {
 
 
     return (
-        <div className="container">
-            <div style={{ backgroundColor: '#4A4949' }}>
-                <div id="carouselExampleCaptions" className="carousel carousel-dark slide " style={{ backgroundColor: '#4A4949' }} data-bs-ride="carousel">
+        <div className="container-fluid">
+            <div style={{ backgroundColor: '#E5E5E5' }}>
+                <div id="carouselExampleCaptions" className="carousel carousel-dark slide " style={{ backgroundColor: '#E5E5E5' }} data-bs-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img src={cib} className="d-block w-auto mx-auto" style={{ height: '30vh', objectFit: 'cover' }} alt="..." />
@@ -124,9 +164,18 @@ export default function DB_point_detail(props) {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
+            </div>
+            <div className="row my-4 justify-content-center">
                 {filelist.length == 0 ? <></> : <CardPoint></CardPoint>}
-                {dataSource ==null ?<></>:RenderItems()}
+            </div>
+            <div className="row">
+                <div class="container w-50" >
+                    {dataSource == null ? <></> : RenderItems()}
+                </div>
+            </div>
+            <div className="text-center">
                 <Link className='btn btn-dark mt-3' to="/dashboard" > ย้อนกลับ </Link>
             </div>
+
         </div>)
 }

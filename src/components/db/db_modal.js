@@ -1,4 +1,5 @@
 import { Container,Row,Alert,Col,Badge,Image,Modal,Card,Button,ProgressBar,Form,Nav,Navbar,Offcanvas,NavDropdown,Carousel,ModalDialog } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 const Modal_c =(props)=> {
 
@@ -131,7 +132,10 @@ const Modal_c =(props)=> {
                       </Col> 
                       </Row>
                   <Row className="justify-content-md-center" style={{textAlign:"center"}} sm="auto" md="auto" lg="auto">
-                  <Button variant="primary" href={in_data.link_folder} target="_blank">ภาพถ่าย/วิดีโอ/เอกสารที่เกี่ยวข้อง</Button>{' '}
+                  {console.log(props)}
+                  <Link to={'1A1'} key={'1A1'} state={{datasource:props.data}} className="btn btn-dark">
+                  ภาพถ่าย/วิดีโอ/เอกสารที่เกี่ยวข้อง
+                </Link>
                   </Row>
                   </Container>
                 </Modal.Body>

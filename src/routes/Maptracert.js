@@ -2,14 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import { GoogleMap, useLoadScript, Marker, Polyline, Circle } from '@react-google-maps/api';
 import { Link, useParams } from 'react-router-dom';
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, query, orderByChild, onValue } from "firebase/database"
+import {  ref, query, orderByChild, onValue } from "firebase/database"
 import { exportIcon, exportETC } from '../utilities/markericon'
 import * as util from '../utilities/util'
 import { firebasedb, matchTel, circleoption } from '../utilities/config'
-
-const google = window.google != null ? window.google : ''
-
 
 
 // Initialize Firebase

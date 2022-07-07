@@ -21,30 +21,22 @@ ChartJS.register(
     Legend,
     ChartDataLabels
   );
-ChartJS.defaults.font.size = "25rem";
+ChartJS.defaults.font.size = "50rem";
 ChartJS.defaults.font.weight = "bold";
 
 ChartJS.defaults.set('plugins.datalabels', {
     color: '#FE777B',
     font: {
         weight: 'bold',
-        size: '30rem',
+        size: '50rem',
       }
   });
-
-
-
-
-
-
-
 const Chart = (props) => {
   console.log("from chart-arrdata", props.chart);
   const label = props.chart.map((ar) => ar.label);
   const value = props.chart.map((ar) => ar.value);
   const options = {
     responsive: true,
-
     plugins: {
       legend: {
         labels: {
@@ -81,7 +73,6 @@ const Chart = (props) => {
     
     
 
-    
     
 };
 export default Chart
