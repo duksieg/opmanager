@@ -1,6 +1,5 @@
 import { Card, Image } from "react-bootstrap"
 const Card_com=(elm)=>{
-    console.log("from card",elm.atb)
     let bg_color=""
           switch (elm.atb.stat) {
             case "ready":

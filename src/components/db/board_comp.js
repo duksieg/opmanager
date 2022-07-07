@@ -11,6 +11,7 @@ import Found_must_list from "./db_found_must_list"
 import Found_add_list from "./db_found_add_list"
 import csdlogo from '../../images/csd.png'
 import Timeticking from "./timeticking"
+import {Link} from 'react-router-dom'
 const Board = (props) => {
     //<!-- console.log(props.date_time) -->
     const [dbShow, setdbcomp] = useState([false, "primary"]);
@@ -162,6 +163,10 @@ const Board = (props) => {
             </Row>
         </Container>
         <Db_overall src={props.source} all_score={props.src_score} bol={dbShow[0]} />
+        
+        <Link to={'1A1'} key={'1A1'} state={{datasource:props.source[14]}} className="list-group-item text-dark">
+                    1A1
+                </Link>
         <Db_stat_report src={props.source} all_score={props.src_score} bol={detailShow[0]}/>
         {/* <Db_detail src={props.source} bol={detailShow[0]} /> */}
         <Db_found src={props.source} bol={foundShow[0]} />
