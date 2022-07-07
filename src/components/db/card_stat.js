@@ -34,7 +34,7 @@ const Card_stat=(elm)=>{
       <Card.Footer style={{ textAlign: "center" ,borderRadius:"30px",background:"#B4B8C7"}}>
       <Card.Text style={{textAlign:"center",fontSize:"1.5rem",fontWeight:"bold"}}>{elm.atb.target}</Card.Text>
       {/*จุดตรวจค้นที่ {elm.atb.target_search} */}
-        <Card.Text style={{textAlign:"center",fontSize:"1.5rem",fontWeight:"bold"}}>{elm.atb.name_target}</Card.Text>
+        {/* <Card.Text style={{textAlign:"center",fontSize:"1.5rem",fontWeight:"bold"}}>{elm.atb.name_target}</Card.Text> */}
 
       </Card.Footer>
 

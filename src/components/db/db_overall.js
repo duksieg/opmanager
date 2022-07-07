@@ -321,7 +321,7 @@ const arr_card=arr_data.slice(6)
               lg="1"
 
             >
-          <Alert   style={{ justifyContent: "center",fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"30px", color: "#F6EFDC",marginTop:"6rem"}}>
+          <Alert   style={{ justifyContent: "center",fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"30px", color: "#F6EFDC",marginTop:"3rem"}}>
                             <div style={{display: "flex", justifyContent: "center"}}>สถานะ</div>
                             <div style={{display: "flex", justifyContent: "center"}}>จุดตรวจค้น</div>
                     </Alert>
