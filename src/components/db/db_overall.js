@@ -1,7 +1,6 @@
 import { Container, Row, Alert, Col, Badge, Image, Modal, Card, Button, ProgressBar, Form, Nav, Navbar, Offcanvas, NavDropdown, Carousel, ModalDialog } from 'react-bootstrap'
 import { useState } from 'react'
 import Chart from './db_chart'
-import Pg_bar from './db_bar';
 import Card_com from './card_comp';
 import Modal_c from './db_modal';
 // import Modal_csl from './db_modal_csl';
@@ -14,6 +13,7 @@ const Db_overall = (props) => {
   if (props.bol == true) {
     const sorted = ['danger', '', 'ready', 'start', 'current', 'end']
     const arr = props.src
+    const wantedList = props.wanted
     let new_arr = []
     const ready = []
     const start = []
@@ -57,10 +57,6 @@ const Db_overall = (props) => {
     const target_search = main_data.map((r) => { return r.target_search })
     const arr_targets = targets.filter((e, i, a) => a.indexOf(e) === i && e != "")
     const arr_target_search = target_search.filter((e, i, a) => a.indexOf(e) === i && e != "")
-    console.log(arr_targets)
-    console.log(arr_target_search)
-    console.log("catched_arr:", catched)
-    console.log("sent_station_arr:", sent_station)
 
 
     // const data0 = [{ color: { background: "#DFDED8" }, title: "จุดตรวจค้น", value: arr_target_search.length }, { color: { background: "#DFDED8" }, title: "เป้าหมาย", value: 16 }]
@@ -103,10 +99,6 @@ const arr_data=labels.map((lb) => ({"label":lb,"value":Math.floor(Math.random() 
 const arr_chart=arr_data.slice(0,6)
 const arr_card=arr_data.slice(6)
 //<!-- mock data for chart-->
-
-
-
-
     return (
       <>
         <Container fluid style={{ backgroundColor: "#13035A" }}>
@@ -195,9 +187,6 @@ const arr_card=arr_data.slice(6)
 
             </Col>
           </Row> */}
-
-
-
           <Row
 
             style={{ backgroundColor:  "#13035A" }}
@@ -250,12 +239,9 @@ const arr_card=arr_data.slice(6)
             </Col>
           );          
         })
-          
           }
                 </Row>                
               </Container>
-
-
             </Col>
             <Col
               xs="auto"
@@ -273,36 +259,17 @@ const arr_card=arr_data.slice(6)
             >
               <Container fluid>
                 <Row>
-                {main_data.map((elm) => {
-                  console.log("test elm" + elm.target);
-                  if(elm.target!="3A1-2" && elm.target!="3A1-4" && elm.target!="3A1-5" && elm.target !="2A6-2" && elm.target !="1A16-2" && elm.target !="2A17-2" )
+                {wantedList.map((elm) => {
+                  console.log(elm)
                   return (
-                    <Col
-                      xs="3"
-                      md="3"
-                      lg="3"
-                      xl="3"
-                      xxl="2"
-                      style={{
-                        display: "inline-flex",
-                        justifyContent: "center",
-                       
-                      }}
-                      onClick={() => setModalShow([true, elm])}
-                    >
+                    <Col xs="3" md="3" lg="3" xl="3" xxl="2" style={{display: "inline-flex", justifyContent: "center" }}>
+                      {/* onclick in Col onClick={() => setModalShow([true, elm])} */}
                       <Card_com atb={elm} />
                     </Col>
                   );
                 })}
-
                 </Row>
                 {/* <hr style={{color:"#FFFFFF",height:"2rem",borderWidth:"0",backgroundColor:"#FFFFFF",marginTop:"3rem"}}/> */}
-
-
-
-
-
-
               </Container>
             </Col>
           </Row>
@@ -340,8 +307,6 @@ const arr_card=arr_data.slice(6)
             >
               <Container fluid >
               {main_data.map((elm) => {
-                console.log("test elm" + elm.target);
-
                 return (
                   <Col
                     xs="3"

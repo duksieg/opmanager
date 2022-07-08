@@ -1,8 +1,6 @@
 import React from "react";
-import { Navigate, Location } from "react-router-dom";
 import Navigation from '../components/Navigation'
-import { Card, Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import logo from '../images/iconspar.jpeg'
+import {  Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import ManageOP from './ManageOp'
 
 class LoginOp extends React.Component {
@@ -22,16 +20,19 @@ class LoginOp extends React.Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-        fetch('https://gunman.csd.go.th/loginOp', {
+        fetch(`${process.env.REACT_APP_SERVICE_ENDPOINT}/loginOp`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
         }).then(response => response.json()).then(data => {
             if (data.token) {
+                console.log('login success')
                 sessionStorage.setItem('token', data.token)
                 sessionStorage.setItem('opName', this.state.opName)
             }
             this.setState({ token: data.token })
+        }).catch((err)=>{
+            console.error(err)
         })
     }
 

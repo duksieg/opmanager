@@ -70,19 +70,28 @@ export default function DB_point_detail(props) {
         return <Bar options={options} data={data} />
     }
     const CardPoint = () => {
+        let status = dataSource.stat
+        console.log(status)
+        switch (status) {
+            case 'end': status = 'หลังเข้าค้น'
+                break;
+            case 'current': status = 'ขณะเข้าค้น'
+                break;
+            case 'start': status = 'ปล่อยแถว'
+                break;
+            default:
+                break;
+        }
         return (
             <div className="card mt-4 w-50" >
                 <div className="d-flex row">
-                    <div className="col-md-2 align-self-center">
-                        <img src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetImages/${opName}/18131231231.jpg`} class="card-img-top" style={{ textAlign: 'center', maxWidth: '200px' }}></img>
-                    </div>
                     <div className="col">
                         <div className="card-header">
-                            <p> รายละเอียดจุดค้นที่ 1A1</p>
+                            <p> รายละเอียดจุดค้นที่ {dataSource.target}</p>
                         </div>
                         <div className="card-body">
                             <div className="row">
-                                สถานะ : รายงาน
+                                สถานะ : {status}
                             </div>
                             <div className="row">
                                 หัวหน้าชุด :
@@ -124,9 +133,12 @@ export default function DB_point_detail(props) {
                 }
                 dataset.push(item)
             });
+            return ChartJS(dataset)
+        } else {
+            return <p className="text-center"> ยังไม่พบสิ่งผิดกฎหมาย </p>
         }
 
-        return ChartJS(dataset)
+
 
     }
     const RenderListPDF = () => {
@@ -193,6 +205,7 @@ export default function DB_point_detail(props) {
                 <span className="visually-hidden">Next</span>
               </button>
             </div>
+<<<<<<< HEAD
           </div>
           </Row>
           <Row>
@@ -230,6 +243,17 @@ export default function DB_point_detail(props) {
                     style={{ height: "30vh", objectFit: "cover" }}
                     alt="..."
                   />
+=======
+            <div className="row my-4 justify-content-center">
+                <div className="col-md-2 align-self-center">
+                    <img src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetImages/${opName}/18131231231.jpg`} class="card-img-top" style={{ textAlign: 'center', maxWidth: '200px' }}></img>
+                </div>
+                {filelist.length == 0 ? <></> : <CardPoint></CardPoint>}
+            </div>
+            <div className="row">
+                <div class="container w-50" >
+                    {dataSource == null ? <></> : RenderItems()}
+>>>>>>> ae14712b233d012d372748d4aeddabdbc82046ca
                 </div>
                 {filelist.length == 0 ? <></> : RenderImages()}
               </div>

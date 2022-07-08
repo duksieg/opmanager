@@ -21,6 +21,7 @@ export default function Navlink() {
                                     <Nav.Link className='text-light' href="/opmanager/tracert">ติดตามเป้าหมาย</Nav.Link>
                                     <Nav.Link className='text-light' href="/opmanager/reporter">รายงานภารกิจ</Nav.Link>
                                     <Nav.Link className='text-light' href="/opmanager/dashboard">ผลการปฏิบัติ</Nav.Link>
+                                    <Nav.Link className='text-light' href="/opmanager/dashboard/map">แผนที่ปฏิบัติการ</Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Container>

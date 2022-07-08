@@ -15,6 +15,7 @@ import Dashboard from './routes/Dashboard'
 import Reporter from './routes/Reporter'
 import Tracert from './routes/Tracert'
 import PointDetail from './components/db/db_point_detail'
+import DB_Gmap from './components/db/db_Gmap';
 
 ReactDOM.render(
   <BrowserRouter basename='/opmanager'>
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="tracert" element={<Tracert />} />
         <Route path="dashboard" element={<Dashboard/>}/>
         <Route path="dashboard/:pointcode" element={<PointDetail/>}/>
+        <Route path="dashboard/map" element={<DB_Gmap/>}/>
         <Route path="tracert/:opname" element={<Gmap />} />
         <Route path="reporter" element={<Reporter/>}/>
         
