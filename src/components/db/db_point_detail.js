@@ -6,11 +6,13 @@ import cib from '../../images/cib.png'
 import {
     Chart as ChartJS,
 } from 'chart.js';
+
+ChartJS.defaults.font.size = "10rem";
 ChartJS.defaults.set('plugins.datalabels', {
     color: '#FE777B',
     font: {
         weight: 'bold',
-        size: '40rem',
+        size: '20rem',
     }
 });
 export default function DB_point_detail(props) {
