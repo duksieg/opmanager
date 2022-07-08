@@ -1,5 +1,8 @@
 import { Container,Row,Alert,Col,Image,Modal} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
+import { getDatabase, ref, query, orderByChild, onValue,update } from "firebase/database"
+
+import { firebasedb } from "../../utilities/config"
 // import Update_point_detail from './db-model_update_point-detail'
 const Modal_c =(props)=> {
 
@@ -35,6 +38,13 @@ const Modal_c =(props)=> {
     const arr_end=eval(in_data.end_check_list)
     console.log(arr)
     let cl
+
+    const updates ={};
+    updates["/tester1/focus_point_detail"]=in_data.target
+    console.log(updates)
+    update(ref(firebasedb), updates)
+
+
     return (<>
               <Modal 
                     {...props} 
@@ -62,7 +72,8 @@ const Modal_c =(props)=> {
                           <Alert style={{textAlign:"center",background:bg_color,fontSize:"1.5rem",padding:"1rem",borderRadius:"30px",justifyContent: "center",marginTop:"1rem"}} >
                               <div>{in_data.name_target}</div>
                               <div>{in_data.address}</div>
-                              <div> <a href={in_data.link_map} target="_blank">แผนที่จุดตรวจค้น</a></div>
+                              <Link to={"./map"}>แผนที่จุดตรวจค้น</Link>
+                              {/* <div> <a href={in_data.link_map} target="_blank">แผนที่จุดตรวจค้น</a></div> */}
                               <div>สถานะการตรวจค้น: {in_data.stat}</div>
                           </Alert>
                           </Col>                    
@@ -134,7 +145,7 @@ const Modal_c =(props)=> {
                       </Col> 
                       </Row>
                   <Row className="justify-content-md-center" style={{textAlign:"center"}} sm="auto" md="auto" lg="auto">
-                  {props.data == null ?<></>:<Link to={props.data.target} key={props.data.target} state={{datasource:props.data}} className="btn btn-dark">
+                  {props.data == null ?<></>:<Link to={"./pointdetail"} state={{datasource:props.data}} className="btn btn-dark" style={{fontSize:"1.5rem"}}>
                   ภาพถ่าย/วิดีโอ/เอกสารที่เกี่ยวข้อง
                 </Link>}
                   </Row>

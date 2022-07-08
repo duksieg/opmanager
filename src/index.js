@@ -26,7 +26,7 @@ ReactDOM.render(
         <Route path="manageop" element={<ManageOP />} />
         <Route path="tracert" element={<Tracert />} />
         <Route path="dashboard" element={<Dashboard/>}/>
-        <Route path="dashboard/:pointcode" element={<PointDetail/>}/>
+        <Route path="dashboard/pointdetail" element={<PointDetail/>}/>
         <Route path="dashboard/map" element={<DB_Gmap/>}/>
         <Route path="tracert/:opname" element={<Gmap />} />
         <Route path="reporter" element={<Reporter/>}/>

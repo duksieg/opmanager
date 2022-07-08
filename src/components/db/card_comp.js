@@ -1,10 +1,27 @@
 import { Card, Image } from "react-bootstrap"
 import arrested from '../../images/arrested.png'
 const Card_com = (elm) => {
-    const card_style = { width: '20rem', background: "#6D6E70", borderRadius: "30px", marginTop: "1.5rem" }
-    return (
-        <div className="card">
-            <div className="card-body">
+    const card_style = { width: '15rem', background: "#6D6E70", borderRadius: "30px", marginTop: "1rem" }
+    return (<>
+            <Card style={card_style} >
+            <Card.Body>
+            <Card.Img variant="top" src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetimages/op_bell100/${elm.atb.targetPic}` } style={{height:'8rem',width:'100%',objectFit:'cover'}} />
+            {elm.atb.status != 'found' ? <></> :
+                            <div class="card-img-overlay text-center align-items-center">
+                                <Image src={arrested} style={{ objectFit:'cover',width:'100%'}}/>
+
+                            </div>
+                        }
+            <Card.Footer style={{ textAlign: "center" ,borderRadius:"30px",background:"#B4B8C7"}}>
+            <Card.Text style={{textAlign:"center",fontSize:"1rem",fontWeight:"bold"}}>{elm.atb.targetName}</Card.Text>
+
+            </Card.Footer>
+            </Card.Body>
+            </Card>
+
+
+        {/* <div className="card">
+            <div className="card-body" style={card_style}>
                 <img  src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetimages/op_bell100/${elm.atb.targetPic}` } style={{height:'100%',width:'100%',objectFit:'cover'}} className="card-img-top"></img>
             </div>
             {elm.atb.status != 'found' ? <></> :
@@ -13,10 +30,10 @@ const Card_com = (elm) => {
                 </div>
             }
             <div className="card-footer text-center" style={{fontSize:'1.5rem'}}>
-                {/* <Card.Text style={{textAlign:"center",fontSize:"2rem",fontWeight:"bold"}}>จุดตรวจค้นที่ {elm.atb.target_search} {elm.atb.target}</Card.Text> */}
-                <div className="card-text">{elm.atb.targetName}</div>
+                {/* <Card.Text style={{textAlign:"center",fontSize:"2rem",fontWeight:"bold"}}>จุดตรวจค้นที่ {elm.atb.target_search} {elm.atb.target}</Card.Text>
+                <div className="card-footer text-muted">{elm.atb.targetName}</div>
             </div>
-        </div>
-    )
+        </div>  */}
+    </>)
 }
 export default Card_com

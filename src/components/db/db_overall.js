@@ -147,46 +147,7 @@ const arr_card=arr_data.slice(6)
               })}
             </Col>
           </Row>
-          {/* <Row
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              backgroundColor:  "#13035A" ,
-            }}
-          >
-            <Col
-              xs="auto"
-              sm="auto"
-              md="auto"
-              lg="5"
-              style={{
-                display: "flex",
-                justifyContent: "center",
 
-              }}
-            >
-          <Alert   style={{ fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1rem"}}>
-                            การตรวจยึดของกลาง
-                    </Alert>
-            </Col>
-
-            <Col
-              xs="auto"
-              sm="auto"
-              md="auto"
-              lg="7"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-
-              }}
-            >
-          <Alert   style={{ fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1rem"}}>
-                            สถานะการจับกุมเป้าหมาย
-                    </Alert>
-
-            </Col>
-          </Row> */}
           <Row
 
             style={{ backgroundColor:  "#13035A" }}
@@ -262,7 +223,7 @@ const arr_card=arr_data.slice(6)
                 {wantedList.map((elm) => {
                   console.log(elm)
                   return (
-                    <Col xs="3" md="3" lg="3" xl="3" xxl="2" style={{display: "inline-flex", justifyContent: "center" }}>
+                    <Col xs="3" md="2" lg="2"  style={{display: "inline-flex", justifyContent: "center",borderRadius:"30px" }}>
                       {/* onclick in Col onClick={() => setModalShow([true, elm])} */}
                       <Card_com atb={elm} />
                     </Col>
@@ -344,3 +305,47 @@ const arr_card=arr_data.slice(6)
   } else { return (<div className="justify-content-md-center"></div>) }
 }
 export default Db_overall
+
+
+
+
+          {/* <Row
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              backgroundColor:  "#13035A" ,
+            }}
+          >
+            <Col
+              xs="auto"
+              sm="auto"
+              md="auto"
+              lg="5"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+
+              }}
+            >
+          <Alert   style={{ fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1rem"}}>
+                            การตรวจยึดของกลาง
+                    </Alert>
+            </Col>
+
+            <Col
+              xs="auto"
+              sm="auto"
+              md="auto"
+              lg="7"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+
+              }}
+            >
+          <Alert   style={{ fontSize:"1.5rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"1rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1rem"}}>
+                            สถานะการจับกุมเป้าหมาย
+                    </Alert>
+
+            </Col>
+          </Row> */}
