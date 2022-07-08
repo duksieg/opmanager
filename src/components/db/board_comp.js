@@ -43,7 +43,7 @@ const Board = (props) => {
                 </Col>
             </Row>
         </Container>
-        <Db_overall src={props.source} all_score={props.src_score} bol={dbShow[0]} />
+        <Db_overall src={props.source} wanted={props.wanted} all_score={props.src_score} bol={dbShow[0]} />
         
       
         <Db_stat_report src={props.source} all_score={props.src_score} bol={detailShow[0]}/>
