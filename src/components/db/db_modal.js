@@ -1,6 +1,6 @@
-import { Container,Row,Alert,Col,Badge,Image,Modal,Card,Button,ProgressBar,Form,Nav,Navbar,Offcanvas,NavDropdown,Carousel,ModalDialog } from 'react-bootstrap'
+import { Container,Row,Alert,Col,Image,Modal} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
-
+import Update_point_detail from './db-model_update_point-detail'
 const Modal_c =(props)=> {
 
     const {show,data,onHide}=props
@@ -8,7 +8,7 @@ const Modal_c =(props)=> {
     if(data===undefined){
     
     console.log(true)
-    in_data={point:"",name:"",status:"",reporter:"",current_check_list:[],end_check_list:[],pic_url:""}
+    in_data={point:"",name:"",status:"",reporter:"",current_check_list:[],end_check_list:[],pic_url:"",target:""}
     }else{in_data=data}
     //
     console.log("from modal",in_data)
@@ -56,13 +56,15 @@ const Modal_c =(props)=> {
                   <Container fluid>
                       <Row className="justify-content-md-center">
                           <Col xs="3" sm="3" md="3" lg="auto"  style={{display: "flex",justifyContent: "center"}}> 
-                              <Image src={in_data.pic_url.replace("file/d/","uc?id=")} style={{height:"10rem"}}/>
+                              <Image src={in_data.pic_url.replace("file/d/","uc?id=")} style={{height:"15rem"}}/>
                           </Col>
-                          <Col xs="9" sm="9" md="9" lg="auto" style={{textAlign:"center",background:bg_color,fontSize:"1.5rem"}} > 
+                          <Col xs="9" sm="9" md="9" lg="auto" > 
+                          <Alert style={{textAlign:"center",background:bg_color,fontSize:"1.5rem",padding:"1rem",borderRadius:"30px",justifyContent: "center",marginTop:"1rem"}} >
                               <div>{in_data.name_target}</div>
                               <div>{in_data.address}</div>
                               <div> <a href={in_data.link_map} target="_blank">แผนที่จุดตรวจค้น</a></div>
                               <div>สถานะการตรวจค้น: {in_data.stat}</div>
+                          </Alert>
                           </Col>                    
                       </Row>
                       <Row className="justify-content-md-center" style={{textAlign:"center",fontSize:"1.5rem"}}>
@@ -132,8 +134,9 @@ const Modal_c =(props)=> {
                       </Col> 
                       </Row>
                   <Row className="justify-content-md-center" style={{textAlign:"center"}} sm="auto" md="auto" lg="auto">
-                  {console.log(props)}
-                  <Link to={'1A1'} key={'1A1'} state={{datasource:props.data}} className="btn btn-dark">
+                  {console.log("from model target",in_data)}
+                  <Update_point_detail point_code={in_data.target}/>
+                  <Link to={in_data.target} key={in_data.target} state={{datasource:in_data}} className="btn btn-dark">
                   ภาพถ่าย/วิดีโอ/เอกสารที่เกี่ยวข้อง
                 </Link>
                   </Row>
