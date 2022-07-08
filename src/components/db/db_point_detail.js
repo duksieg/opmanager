@@ -159,146 +159,39 @@ export default function DB_point_detail(props) {
 
 
     return (
-      <>
-        <Container>
-            <Row>
-          <div style={{ backgroundColor: "#E5E5E5" }}>
-            <div
-              id="carouselExampleCaptions"
-              className="carousel carousel-dark slide "
-              style={{ backgroundColor: "#E5E5E5" }}
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    src={cib}
-                    className="d-block w-auto mx-auto"
-                    style={{ height: "30vh", objectFit: "cover" }}
-                    alt="..."
-                  />
+        <div className="container">
+        <div style={{ backgroundColor: '#E5E5E5' }}>
+            <div id="carouselExampleCaptions" className="carousel carousel-dark slide " style={{ backgroundColor: '#E5E5E5' }} data-bs-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
+                        <img src={cib} className="d-block w-auto mx-auto" style={{ height: '30vh', objectFit: 'cover' }} alt="..." />
+                    </div>
+                    {filelist.length == 0 ? <></> : RenderImages()}
                 </div>
-                {filelist.length == 0 ? <></> : RenderImages()}
-              </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                </button>
             </div>
-<<<<<<< HEAD
-          </div>
-          </Row>
-          <Row>
-          {/* <Container fluid>
-                      <Row className="justify-content-md-center">
-                          <Col xs="3" sm="3" md="3" lg="auto"  style={{display: "flex",justifyContent: "center"}}> 
-                              <Image src={pointdata.datasource.pic_url.replace("file/d/","uc?id=")} style={{height:"10rem"}}/>
-                          </Col>
-                          <Col xs="9" sm="9" md="9" lg="auto" style={{textAlign:"center",background:bg_color,fontSize:"1.5rem"}} > 
-                              <div>{pointdata.datasource.name_target}</div>
-                              <div>{pointdata.datasource.address}</div>
-                              <div> <a href={pointdata.datasource.link_map} target="_blank">แผนที่จุดตรวจค้น</a></div>
-                              <div>สถานะการตรวจค้น: {pointdata.datasource.stat}</div>
-                          </Col>                    
-                      </Row>
-        </Container> */}
-
-
-          </Row>
-        </Container>
-
-        <div className="container-fluid">
-          <div style={{ backgroundColor: "#E5E5E5" }}>
-            <div
-              id="carouselExampleCaptions"
-              className="carousel carousel-dark slide "
-              style={{ backgroundColor: "#E5E5E5" }}
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    src={cib}
-                    className="d-block w-auto mx-auto"
-                    style={{ height: "30vh", objectFit: "cover" }}
-                    alt="..."
-                  />
-=======
-            <div className="row my-4 justify-content-center">
-                <div className="col-md-2 align-self-center">
-                    <img src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetImages/${opName}/18131231231.jpg`} class="card-img-top" style={{ textAlign: 'center', maxWidth: '200px' }}></img>
-                </div>
-                {filelist.length == 0 ? <></> : <CardPoint></CardPoint>}
-            </div>
-            <div className="row">
-                <div class="container w-50" >
-                    {dataSource == null ? <></> : RenderItems()}
->>>>>>> ae14712b233d012d372748d4aeddabdbc82046ca
-                </div>
-                {filelist.length == 0 ? <></> : RenderImages()}
-              </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
-          <div className="row my-4 justify-content-center">
-            {filelist.length == 0 ? <></> : <CardPoint></CardPoint>}
-          </div>
-          <div className="row">
-            <div class="container w-50">
-              {dataSource == null ? <></> : RenderItems()}
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Link className="btn btn-dark mt-3" to="/dashboard">
-              {" "}
-              ย้อนกลับ{" "}
-            </Link>
-          </div>
         </div>
-      </>
-    );
+        <div className="row my-4 justify-content-center">
+            <div className="col-md-2 align-self-center">
+                <img src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetImages/${opName}/18131231231.jpg`} class="card-img-top" style={{ textAlign: 'center', maxWidth: '200px' }}></img>
+            </div>
+            {filelist.length == 0 ? <></> : <CardPoint></CardPoint>}
+        </div>
+        <div className="row">
+            <div class="container w-50" >
+                {dataSource == null ? <></> : RenderItems()}
+            </div>
+        </div>
+        <div className="text-center">
+            <Link className='btn btn-dark mt-3' to="/dashboard" > ย้อนกลับ </Link>
+        </div>
+
+    </div>)
 }

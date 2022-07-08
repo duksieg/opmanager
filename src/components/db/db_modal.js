@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import { Container,Row,Alert,Col,Image,Modal} from 'react-bootstrap'
-=======
-import { Container,Row,Alert,Col,Image,Modal,Badge,Card,Button,ProgressBar,Form,Nav,Navbar,Offcanvas,NavDropdown,Carousel,ModalDialog } from 'react-bootstrap'
->>>>>>> ae14712b233d012d372748d4aeddabdbc82046ca
 import {Link} from 'react-router-dom'
-import Update_point_detail from './db-model_update_point-detail'
+// import Update_point_detail from './db-model_update_point-detail'
 const Modal_c =(props)=> {
 
     const {show,data,onHide}=props
@@ -138,13 +134,7 @@ const Modal_c =(props)=> {
                       </Col> 
                       </Row>
                   <Row className="justify-content-md-center" style={{textAlign:"center"}} sm="auto" md="auto" lg="auto">
-<<<<<<< HEAD
-                  {console.log("from model target",in_data)}
-                  <Update_point_detail point_code={in_data.target}/>
-                  <Link to={in_data.target} key={in_data.target} state={{datasource:in_data}} className="btn btn-dark">
-=======
                   {props.data == null ?<></>:<Link to={props.data.target} key={props.data.target} state={{datasource:props.data}} className="btn btn-dark">
->>>>>>> ae14712b233d012d372748d4aeddabdbc82046ca
                   ภาพถ่าย/วิดีโอ/เอกสารที่เกี่ยวข้อง
                 </Link>}
                   </Row>

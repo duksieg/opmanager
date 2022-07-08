@@ -79,7 +79,7 @@ export default function DB_Gmap() {
             <div className='container'>
                 <div className='text-center justify-content-center mt-3 d-flex'>
                     <input type={'text'} className="form-control w-25" onChange={(e) => { setSearchPoint(e.target.value) }}></input>
-                    <div className='btn btn-dark' onClick={onSearching}> ค้นหาจุดค้น</div>
+                    <div className='btn btn-dark' onClick={onSearching} > ค้นหาจุดค้น</div>
                 </div>
             </div>
             <GoogleMap
