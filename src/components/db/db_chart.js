@@ -21,7 +21,7 @@ ChartJS.register(
     Legend,
     ChartDataLabels
   );
-ChartJS.defaults.font.size = "50rem";
+ChartJS.defaults.font.size = "30rem";
 ChartJS.defaults.font.weight = "bold";
 
 ChartJS.defaults.set('plugins.datalabels', {
@@ -42,7 +42,7 @@ const Chart = (props) => {
         labels: {
           // This more specific font property overrides the global property
           font: {
-            size: '8rem',
+            size: '10rem',
 
           },
         },
