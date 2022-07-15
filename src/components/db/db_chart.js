@@ -12,7 +12,9 @@ import {
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-ChartJS.register(
+
+const Chart = (props) => {
+  ChartJS.register(
     CategoryScale,
     LinearScale,
     BarElement,
@@ -21,17 +23,25 @@ ChartJS.register(
     Legend,
     ChartDataLabels
   );
-ChartJS.defaults.font.size = "40rem";
+ChartJS.defaults.font.size = "30rem";
 ChartJS.defaults.font.weight = "bold";
 
 ChartJS.defaults.set('plugins.datalabels', {
     color: '#FE777B',
     font: {
         weight: 'bold',
-        size: '50rem',
+        size: '30rem',
       }
   });
-const Chart = (props) => {
+
+
+
+
+
+
+
+
+
   console.log("from chart-arrdata", props.chart);
   const label = props.chart.map((ar) => ar.label);
   const value = props.chart.map((ar) => ar.value);
