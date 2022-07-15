@@ -177,14 +177,14 @@ const Db_overall = (props) => {
       "กุมภาพันธ์",
       "มีนาคม",
       "เมษายน",
-      "พฤษภาคม",
-      "มิถุนายน",
-      "กรกฎาคม",
-      "สิงหาคม",
-      "กันยายน",
-      "ตุลาคม",
-      "พฤศจิกายน",
-      "ธันวาคม",
+      // "พฤษภาคม",
+      // "มิถุนายน",
+      // "กรกฎาคม",
+      // "สิงหาคม",
+      // "กันยายน",
+      // "ตุลาคม",
+      // "พฤศจิกายน",
+      // "ธันวาคม",
     ];
     const arr_data = labels
       .map((lb) => ({ label: lb, value: Math.floor(Math.random() * 100) }))
@@ -240,7 +240,7 @@ const Db_overall = (props) => {
               justifyContent: "center",
               backgroundColor: "#13035A",
               borderRadius: "30px",
-              marginTop: "1rem",
+              marginTop: "-1rem",
             }}
           >
             <Search_segment maindata={main_data} head={data2} />

@@ -6,7 +6,10 @@ const Rowstat =(elm)=>{
     // console.log("test elm",elm)
     // console.log("search elm",elm.title.search("ของกลาง"))
     const [show, setshow] = useState(false);
+    const [showchart, setshowchart] = useState(true);
+    const [showcatch, setshowcatch] = useState(true);
     const sent_to_search_segment =(e)=>{
+
       if(elm.title.search("สถานะจุดตรวจค้น")!==-1){
         console.log("sent_to_search_segment",show)
         show?setshow(false):setshow(true)
@@ -14,6 +17,19 @@ const Rowstat =(elm)=>{
 
       }
 
+      if(elm.title.search("ตรวจยึดของกลาง")!==-1){
+        console.log("sent_to_search_segment",show)
+        showchart?setshowchart(false):setshowchart(true)
+        elm.bol(showchart)
+
+      }
+
+      if(elm.title.search("สถานะการจับกุม")!==-1){
+        console.log("sent_to_search_segment",show)
+        showcatch?setshowcatch(false):setshowcatch(true)
+        elm.bol(showcatch)
+
+      }     
 
     }
 
@@ -21,7 +37,7 @@ const Rowstat =(elm)=>{
 
 
     return (<>
-    <Col xs="3" md="3" lg={elm.title.search("ของกลาง")!==-1?"5":"2"}  style={{ display: "flex", justifyContent: "center" }}>   
+    <Col xs="3" md="3" lg={elm.title.search("ของกลาง")!==-1 || elm.title.search("รายการตรวจยึด")!==-1?"4":"2"}  style={{ display: "flex", justifyContent: "center" }}>   
           <Alert  className="link" style={{ fontSize:"1.5rem",fontWeight:"bold",padding:"1rem",borderRadius:"30px",...elm.color,marginTop:"0.5rem"}} onClick={sent_to_search_segment} >   
 
                 {elm.title} {elm.value}

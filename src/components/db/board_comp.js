@@ -31,13 +31,13 @@ const Board = (props) => {
                         src={csdlogo}
                         width="200rem" className="responsive-img circle z-depth-10 align-items-start" />
                 </Col>
-                <Col md="auto" lg="auto">
-                    <Alert style={{fontSize:"2.5rem",fontWeight:"bold", color: "#EFD530",backgroundColor: "#140E32",borderRadius:"50px",marginTop:"1.5rem"}} >
-                           ___CSD Operations Car-Illegal___
+                <Col md="auto" lg="auto" >
+                    <Alert style={{fontSize:"2.5rem",fontWeight:"bold", color: "#EFD530",backgroundColor: "#140E32",borderRadius:"50px",marginTop:"1.5rem",width:"50rem",justifyContent:"center",display:"flex"}} >
+                           CSD Operations Car-Illegal
                     </Alert>
                 </Col>
-                <Col md="auto" className="align-self-center">
-                    <Alert  className="p-3 text-center" style={{ fontSize:"2rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"3rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1rem"}}>
+                <Col md="auto" >
+                    <Alert  className="p-3 text-center" style={{ fontSize:"2rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"3rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1.7rem",width:"50rem"}}>
                             <Timeticking/>
                     </Alert>
                 </Col>
