@@ -20,7 +20,7 @@ const Card_stat=(elm)=>{
           default:
               bg_color="#6D6E70"
               }
-    const card_style={ width: '20rem',background:bg_color ,borderRadius:"30px",marginTop:"1rem"}
+    const card_style={ width: '15rem',background:bg_color ,borderRadius:"30px",marginTop:"1rem"}
     return (
     <Card style={card_style} >
       <Card.Body>
@@ -30,13 +30,18 @@ const Card_stat=(elm)=>{
          <Image src={'https://drive.google.com/uc?id=1T--5zy6QYKcFfOdw7Tlpj_Q1OVKtUeql'} style={{width:"10vh",marginTop:'1vh'}}/>
       </div>
       :<></>} */}
-      <Card.Footer style={{ textAlign: "center" ,borderRadius:"30px",background:"#B4B8C7"}}>
-      <Card.Text style={{textAlign:"center",fontSize:"1.5rem",fontWeight:"bold"}}>{elm.atb.target}</Card.Text>
+      <Card.Header style={{ textAlign: "center",fontSize:"1.5rem",fontWeight:"bold",borderRadius:"10px",background:"#B4B8C7",marginTop:"-0.5rem",padding:"0.2rem"}}>{elm.atb.target}</Card.Header>
+      
+      <Card.Footer style={{ textAlign: "center" ,borderRadius:"20px",background:"#B4B8C7",marginTop:"0.5rem"}}>
+      <Card.Text style={{textAlign:"center",fontSize:"1rem",fontWeight:"bold"}}>ค้นเพื่อพบ<br/>{elm.atb.name_target}</Card.Text>
+      <Card.Text style={{textAlign:"center",fontSize:"0.8rem",fontWeight:"bold"}}>{elm.atb.address}</Card.Text> 
       {/*จุดตรวจค้นที่ {elm.atb.target_search} */}
-        {/* <Card.Text style={{textAlign:"center",fontSize:"1.5rem",fontWeight:"bold"}}>{elm.atb.name_target}</Card.Text> */}
+        
 
       </Card.Footer>
+      {/* <Card.Footer style={{ textAlign: "center" ,borderRadius:"20px",background:"#B4B8C7",marginTop:"0.5rem"}}>
 
+      </Card.Footer> */}
       </Card.Body>
     </Card>)
 }
