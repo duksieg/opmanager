@@ -1,4 +1,5 @@
 import { Card, Image } from "react-bootstrap"
+import { v4 as uuidv4 } from 'uuid';
 const Card_stat=(elm)=>{
     let bg_color=""
           switch (elm.atb.stat) {
@@ -12,7 +13,7 @@ const Card_stat=(elm)=>{
                 bg_color="#F1C068"
                 break;
           case "end":
-              bg_color="#66F530"
+              bg_color="#d2e7dd"
               break;
           case "danger":
               bg_color="#C80C09"
@@ -22,7 +23,7 @@ const Card_stat=(elm)=>{
               }
     const card_style={ width: '15rem',background:bg_color ,borderRadius:"30px",marginTop:"1rem"}
     return (
-    <Card style={card_style} >
+    <Card style={card_style} id={uuidv4()}>
       <Card.Body>
       {/* <Card.Img variant="top" src={elm.atb.pic_url.replace("file/d/","uc?export=view&id=")} style={{height:"15rem"}} />
       {elm.atb.current_check_list[0].stat =='พบ' ||elm.atb.stat =='end'?

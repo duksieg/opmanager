@@ -1,36 +1,18 @@
 import {
   Container,
   Row,
-  Alert,
+
   Col,
-  Badge,
-  Image,
-  Modal,
-  Card,
-  Button,
-  ProgressBar,
-  Form,
-  Nav,
-  Navbar,
-  Offcanvas,
-  NavDropdown,
-  Carousel,
-  ModalDialog,
+
 } from "react-bootstrap";
-import { useState } from "react";
-// import Chart from './db_chart'
-import Card_com from "./card_comp";
-import Modal_c from "./db_modal";
-// import Modal_csl from './db_modal_csl';
-import Rowstat from "./db_rowstat_comp";
-import Card_item from "./db_card_item";
-import Card_stat from "./card_stat";
+
+
 import Chart_segment from "./db_chart_segment";
-// import Search_segment_card from './db_search_segment-card';
+
 import Search_segment from "./db_search_segment";
 import Catch_segment from "./db_catch_segment";
 const Db_overall = (props) => {
-  // const [modalShow, setModalShow] = useState(false);
+
 
   if (props.bol == true) {
     const sorted = ["danger", "", "ready", "start", "current", "end"];

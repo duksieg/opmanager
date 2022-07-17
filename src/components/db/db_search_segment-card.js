@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import Card_stat from "./card_stat";
-import Modal_c from "./db_modal";
+import Modal_c from "./db_modal_segment";
 
 const Search_segment_card = (props) => {
   const [modalShow, setModalShow] = useState(false);

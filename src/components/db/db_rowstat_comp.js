@@ -1,5 +1,6 @@
 import {Col,Alert} from 'react-bootstrap'
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 const Rowstat =(elm)=>{
     //const {title,value}=elm
 
@@ -40,7 +41,7 @@ const Rowstat =(elm)=>{
     <Col xs="3" md="3" lg={elm.title.search("ของกลาง")!==-1 || elm.title.search("รายการตรวจยึด")!==-1?"4":"2"}  style={{ display: "flex", justifyContent: "center" }}>   
           <Alert  className="link" style={{ fontSize:"1.5rem",fontWeight:"bold",padding:"1rem",borderRadius:"30px",...elm.color,marginTop:"0.5rem"}} onClick={sent_to_search_segment} >   
 
-                {elm.title} {elm.value}
+                <div id={uuidv4()}>{elm.title} {elm.value}</div>
 
               {/* <div style={{textAlign:"center"}}>
                 <h2></h2>

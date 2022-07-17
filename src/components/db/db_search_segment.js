@@ -2,6 +2,7 @@ import { Container, Row, Col,Tab,Tabs } from "react-bootstrap";
 import Rowstat from "./db_rowstat_comp";
 import Search_segment_card from "./db_search_segment-card";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 const Search_segment = (props) => {
     const [showcard, setshow] = useState(false);
     console.log("state showcard:",showcard)
@@ -31,7 +32,7 @@ const Search_segment = (props) => {
             }}
           >
             {props.head.map((elm) => {
-              return <Rowstat {...elm} bol={setshow}/>;
+              return <Rowstat {...elm} bol={setshow} />;
             })}
           </Col>
         </Row>

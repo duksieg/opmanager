@@ -49,10 +49,10 @@ const Modal_c =(props)=> {
               <Modal 
                     {...props} 
                     animation={true} 
-                    size="xl"
+                    // size="xl"
 
-                    dialogClassName="modal-90w"
-    
+                    dialogClassName="modal-dialog-centered mw-100 w-75"
+                    // style={{maxWidth:"2400px"}}
                     >
                 <Modal.Header  closeButton>
                   
@@ -65,10 +65,10 @@ const Modal_c =(props)=> {
                 <Modal.Body className="show-grid">
                   <Container fluid>
                       <Row className="justify-content-md-center">
-                          <Col xs="3" sm="3" md="3" lg="auto"  style={{display: "flex",justifyContent: "center"}}> 
+                          <Col xs="3" sm="3" md="3" lg="auto" xl="auto" style={{display: "flex",justifyContent: "center"}}> 
                               <Image src={in_data.pic_url.replace("file/d/","uc?id=")} style={{height:"15rem"}}/>
                           </Col>
-                          <Col xs="9" sm="9" md="9" lg="auto" > 
+                          <Col xs="9" sm="9" md="9" lg="auto" xl="auto"> 
                           <Alert style={{textAlign:"center",background:bg_color,fontSize:"1.5rem",padding:"1rem",borderRadius:"30px",justifyContent: "center",marginTop:"1rem"}} >
                               <div>{in_data.name_target}</div>
                               <div>{in_data.address}</div>
@@ -76,7 +76,8 @@ const Modal_c =(props)=> {
                               {/* <div> <a href={in_data.link_map} target="_blank">แผนที่จุดตรวจค้น</a></div> */}
                               <div>สถานะการตรวจค้น: {in_data.stat}</div>
                           </Alert>
-                          </Col>                    
+                          </Col>      
+           
                       </Row>
                       <Row className="justify-content-md-center" style={{textAlign:"center",fontSize:"1.5rem"}}>
                       <Col sm="auto" md="auto" lg="auto"  className="justify-content-md-center"> 
