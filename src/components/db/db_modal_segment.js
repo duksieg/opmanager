@@ -53,6 +53,7 @@ const Modal_c = (props) => {
   console.log("eval:", eval(in_data));
   const arr = eval(in_data.current_check_list);
   const arr_end = eval(in_data.end_check_list);
+  const item_list =eval(in_data.items);
   console.log(arr);
   let cl;
 
@@ -83,15 +84,18 @@ const Modal_c = (props) => {
               >
                 <Left_model_segment indata={in_data} target_detail={arr} must_do={arr_end}/>
               </Col>
-              <Col xs="9" sm="9" md="9" lg="9" xl="9">
+              <Col xs="9" sm="9" md="9" lg="8" xl="8">
                 <Container fluid>
                   <Row
                     className="justify-content-md-center"
-                    style={{ display: "inline-flex" }}
+                    style={{ display: "flex" }}
                   >
                     <Topcenter_model_segment indata={in_data} />
                   </Row>
                 </Container>
+              </Col>
+              <Col lg="2" xl="2">
+                <Right_model_segment indata={in_data} item={item_list} />
               </Col>
             </Row>
 
@@ -137,7 +141,7 @@ const Left_model_segment = (props) => {
           className="justify-content-md-center"
           style={{ textAlign: "center" }}
         >
-          <Container fluid style={{ backgroundColor: "#d2e7dd" }}>
+          <Container fluid >{/*style={{ backgroundColor: "#d1f4fb" }} */}
             <Row
               className="justify-content-md-center"
               style={{ textAlign: "center" }}
@@ -198,7 +202,7 @@ const Left_model_segment = (props) => {
               className="justify-content-md-center"
               style={{ textAlign: "center" }}
             >
-              <Alert variant="info" className="mb-2">
+              <Alert variant="info" className="mb-2" style={{ textAlign: "center", fontSize: "1.2rem" }}>
                 <div style={{ textAlign: "center" }}>สิ่งที่ต้องดำเนินการ</div>
               </Alert>
             </Row>
@@ -218,6 +222,7 @@ const Left_model_segment = (props) => {
                           : "dark"
                       }
                       className="mb-2"
+                      style={{ textAlign: "center", fontSize: "1.2rem" }}
                     >
                       <div style={{ textAlign: "center" }}>{elm.name}</div>
                       <div style={{ textAlign: "center" }}>{elm.value}</div>
@@ -233,7 +238,7 @@ const Left_model_segment = (props) => {
   );
 };
 
-const Center_model_segment = (props) => {};
+
 
 const Topcenter_model_segment = (props) => {
   let list = [
@@ -255,7 +260,7 @@ const Topcenter_model_segment = (props) => {
       <Container fluid style={{ backgroundColor: "#d1f4fb" }}>
         <Row
           className="justify-content-md-center"
-          style={{ textAlign: "center", display: "inline-flex" }}
+          style={{ textAlign: "center", display: "flex" ,justifyContent: "center"}}
         >
           {list.map((elm) => {
             return (
@@ -286,6 +291,110 @@ const Topcenter_model_segment = (props) => {
     </>
   );
 };
+
+
+const Midcenter_model_segment = (props) => {};
+
+const Right_model_segment = (props) => {
+  let {item} = props;
+  try{
+    console.log(item.name);
+
+  }catch(e){
+    item=[]
+  }
+  const Item_c= (elm) => {
+    const {data} = elm;
+    return(<>
+                <Row
+              className="justify-content-md-center"
+              style={{ textAlign: "center" }}
+            >
+              <Alert variant="danger" className="mb-2">
+                <div style={{ textAlign: "center", fontSize: "1.2rem" }}>
+                {data.name} จำนวน : {data.value}
+                </div>
+              </Alert>
+            </Row>   
+    
+    </>)
+  }
+
+
+
+  return (
+    <>
+       <Container fluid >{/*style={{ backgroundColor: "#d1f4fb" }} */}
+        <Row
+          className="justify-content-md-center"
+          style={{ textAlign: "center" }}
+        >
+          <Container fluid >{/*style={{ backgroundColor: "#d1f4fb" }} */}
+            <Row
+              className="justify-content-md-center"
+              style={{ textAlign: "center" }}
+            >
+              <Alert variant="info" className="mb-2">
+                <div style={{ textAlign: "center", fontSize: "1.5rem" }}>
+                  เจ้าหน้าที่ตรวจค้น
+                </div>
+              </Alert>
+            </Row>
+            <Row
+              className="justify-content-md-center"
+              style={{ textAlign: "center" }}
+            >
+              <Alert variant="info" className="mb-2">
+                <div style={{ textAlign: "center", fontSize: "1.2rem" }}>
+                  หัวหน้าชุด : นายนายนาย
+                </div>
+                <div style={{ textAlign: "center", fontSize: "1.2rem" }}>
+                  โทร. 099-999-9999
+                </div>
+                <div style={{ textAlign: "center", fontSize: "1.2rem" }}>
+                  ผู้รายงาน : นายนายนาย
+                </div>
+                <div style={{ textAlign: "center", fontSize: "1.2rem" }}>
+                  โทร. 099-999-9999
+                </div>                
+              </Alert>
+            </Row>            
+          </Container>
+        </Row>
+        <Row 
+            className="justify-content-md-center"
+            style={{ textAlign: "center" }}
+        >
+          <Container fluid >{/*style={{ backgroundColor: "#d1f4fb" }} */}
+          
+          <Row
+              className="justify-content-md-center"
+              style={{ textAlign: "center" }}
+            >
+              <Alert variant="info" className="mb-2">
+                <div style={{ textAlign: "center", fontSize: "1.5rem" }}>
+                  ตรวจยึดของกลาง
+                </div>
+              </Alert>
+            </Row>          
+            {item.map((elm) => {
+                return(<><Item_c data={elm}/>    </>)
+
+            })}
+               
+          
+          
+          </Container>
+
+
+
+
+        </Row>
+      </Container>
+    </>
+  );
+};
+
 
 {
   /* <Alert
