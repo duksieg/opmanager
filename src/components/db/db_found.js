@@ -21,7 +21,7 @@ const Db_found = (props) => {
 
         </NavDropdown>
         <Row style={{ display: "flex", justifyContent: "center" }}>
-          <Col xs="6" sm="4" md="4" lg="4" xl="auto" xl="auto" style={{ display: "flex", justifyContent: "center" }}>
+          <Col xs="6" sm="4" md="4" lg="4" xl="auto" style={{ display: "flex", justifyContent: "center" }}>
 
             <Nav
               variant="pills"

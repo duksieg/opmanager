@@ -1,8 +1,12 @@
+
 import React, { useState, useEffect } from "react";
 import { Container,Row,Alert,Col,Image,Modal} from 'react-bootstrap'
 import { useLocation, Link } from "react-router-dom";
 import { Bar } from 'react-chartjs-2';
 import cib from '../../images/cib.png'
+// import { doc, getDoc} from "firebase/firestore"; 
+import {  ref ,onValue} from "firebase/database"
+import { firebasedb } from "../../utilities/config";
 import {
     Chart as ChartJS,
 } from 'chart.js';
@@ -15,28 +19,68 @@ ChartJS.defaults.set('plugins.datalabels', {
         size: '20rem',
     }
 });
-export default function DB_point_detail(props) {
-    // console.log("DB_point_detail:props",props)
+
+
+
+
+export default function DB_point_detail() {
+    const [focus_point, setfocus_point] = useState("");
+    const getfocus_point = async () => {
+        const refdoc = ref(firebasedb, "tester1/focus_point_detail");
+        
+        await onValue(refdoc, (snapshot) => {
+            console.log(snapshot.val());
+            // res_point.push(snapshot.val()) ;
+            setfocus_point(snapshot.val())
+          })
+        console.log(focus_point)
+        // console.log(`"tester1/data/${res_point[0]}"`)
+        if (focus_point !== "") {
+            const ref_point_detail = ref(firebasedb, `/tester1/data/${focus_point}`);
+            await onValue(ref_point_detail, (point_detail) => {
+                console.log("point_detail:",point_detail.val());
+                setDatasource(point_detail.val());
+                
+            }) 
+
+        }
+        
+    }
+
+
+
+
     const [filelist, setFileList] = useState([])
     const [dataSource, setDatasource] = useState()
     const { state } = useLocation();
+    console.log("state",state)
+
     const pointdata = state || {}
     //hard code for awail
     const opName = 'op_bell100'
 
+    useEffect( () => {
+                    console.log(pointdata)
+                    if (pointdata.datasource == null) {
+                        // console.error('not get point data');
+                        getfocus_point();
+                    }
 
-    useEffect(() => {
-        console.log(pointdata)
-        if (pointdata.datasource == null) console.error('not get point data')
-        else setDatasource(pointdata.datasource)
-        const getImages = async () => {
-            let response = fetch(`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/getimages/${opName}/1A1`, {
-                method: 'get',
-            })
-            setFileList(await (await response).json())
-        }
-        getImages()
-    }, [state])
+                    
+                    setDatasource(pointdata.datasource);
+                    
+                    
+                    
+                    const getImages = async () => {
+                        let response = fetch(`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/getimages/${opName}/1A1`, {
+                            method: 'get',
+                        })
+                        setFileList(await (await response).json())
+                    }
+                    getImages()
+                    }, 
+                    [state,focus_point]
+    )
 
     const ChartJS = (setdata) => {
         const label = setdata.map((ar) => ar.label);
@@ -162,6 +206,7 @@ export default function DB_point_detail(props) {
 
     return (
         <div className="container">
+
         <div style={{ backgroundColor: '#E5E5E5' }}>
             <div id="carouselExampleCaptions" className="carousel carousel-dark slide " style={{ backgroundColor: '#E5E5E5' }} data-bs-ride="carousel">
                 <div className="carousel-inner">

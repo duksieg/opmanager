@@ -6,8 +6,8 @@ const Card_com = (elm) => {
             <Card style={card_style} >
             <Card.Body>
             <Card.Img variant="top" src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetimages/op_bell100/${elm.atb.targetPic}` } style={{height:'8rem',width:'100%',objectFit:'cover'}} />
-            {elm.atb.status != 'found' ? <></> :
-                            <div class="card-img-overlay text-center align-items-center">
+            {elm.atb.status !== 'found' ? <></> :
+                            <div className="card-img-overlay text-center align-items-center">
                                 <Image src={arrested} style={{ objectFit:'cover',width:'100%'}}/>
 
                             </div>
