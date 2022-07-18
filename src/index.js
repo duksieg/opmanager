@@ -29,7 +29,7 @@ ReactDOM.render(
         <Route path="dashboard/pointdetail" element={<PointDetail/>}/>
         <Route path="dashboard/map" element={<DB_Gmap/>}/>
         <Route path="tracert/:opname" element={<Gmap />} />
-        <Route path="reporter" element={<Reporter/>}/>
+        <Route path="reporter/:opname" element={<Reporter/>}/>
         
     </Routes>
   </BrowserRouter>,

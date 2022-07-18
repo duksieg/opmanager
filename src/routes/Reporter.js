@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { initializeApp } from 'firebase/app';
 import { firebasedb } from '../utilities/config';
-import { ref, onValue, getDatabase } from 'firebase/database';
+import { ref, onValue } from 'firebase/database';
 import Itemreport from '../components/Reporter/Itemreport'
 import { CircleLoader } from 'react-spinners';
+import { useParams } from 'react-router-dom'
 const db = firebasedb
 
 export default function Reporter() {
     const [maindata, setMaindata] = useState()
     const [loading, setLoading] = useState(true)
     const [pointData, setPointData] = useState()
+    const params = useParams()
     useEffect(() => {
-        const starCountRef = ref(db, 'op_bell100/1vhPSwm7DBMcxEBGIpLTzDgAzUPoqlTj14Yt2hvWvU6Y/data');
+        const starCountRef = ref(db, `${params.opname}/1vhPSwm7DBMcxEBGIpLTzDgAzUPoqlTj14Yt2hvWvU6Y/data`);
         onValue(starCountRef, (snapshot) => {
             const data = snapshot.val();
             setMaindata(data)
@@ -41,12 +42,18 @@ export default function Reporter() {
     }
 
     return (
-        loading ? <CircleLoader loading={loading} color={"#000000"}></CircleLoader> :
+        loading ? <div className="d-flex align-items-center">
+            <strong>Loading...</strong>
+            <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div> :
             <div className='container'>
+                <div>
+
+                </div>
                 <select className="form-select" onChange={(e) => { setItempoint(e) }}>
                     {getpointlist()}
                 </select>
-                {pointData == null ? <></> : <Itemreport itemdata={pointData}></Itemreport>}
+                {pointData == null ? <></> : <Itemreport itemdata={pointData} opname={params.opname}></Itemreport>}
             </div>
     )
 
