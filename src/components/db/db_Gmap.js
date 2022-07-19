@@ -21,7 +21,7 @@ export default function DB_Gmap() {
     const [searchPoint, setSearchPoint] = useState('')
     const [focusMarker, setFocusMarker] = useState(null)
     let navigate= useNavigate()
-    const starCountRef = ref(firebasedb, 'op_bell100/1vhPSwm7DBMcxEBGIpLTzDgAzUPoqlTj14Yt2hvWvU6Y/data');
+    const starCountRef = ref(firebasedb, 'tester1/data');
 
     const onMount = () => {
         onValue(starCountRef, (snapshot) => {

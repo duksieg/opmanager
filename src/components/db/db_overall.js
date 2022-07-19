@@ -6,7 +6,7 @@ import {
 
 } from "react-bootstrap";
 
-
+import { v4 as uuidv4 } from 'uuid';
 import Chart_segment from "./db_chart_segment";
 
 import Search_segment from "./db_search_segment";
@@ -110,31 +110,36 @@ const Db_overall = (props) => {
     ];
 
     //old version use เริ่มตรวจค้น const data2=[{color:{background:"#90EFF9",marginTop:"10px"},title:"ปล่อยแถว",value:ready.length},{color:{background:"#F3FA50",marginTop:"10px"},title:"เริ่มตรวจค้น",value:start.length},{color:{background:"#F1C068",marginTop:"10px"},title:"ขณะตรวจค้น",value:current.length},{color:{background:"#66F530",marginTop:"10px"},title:"หลังตรวจค้น",value:end.length}]
-    const data2 = [
+    const search_head = [
       {
         color: { color: "white", background: "#140E32" },
         title: "สถานะจุดตรวจค้น",
         value: "",
+        id: "first",
       },
       {
         color: { background: "#DFDED8" },
         title: "จุดตรวจค้น",
         value: arr_target_search.length,
+        id: "second",
       },
       {
         color: { background: "#90EFF9" },
         title: "ปล่อยแถว",
         value: ready.length,
+        id: uuidv4(),
       },
       {
         color: { background: "#F1C068" },
         title: "ขณะตรวจค้น",
         value: current.length,
+        id: uuidv4(),
       },
       {
         color: { background: "#66F530" },
         title: "หลังตรวจค้น",
         value: end.length,
+        id: uuidv4(),
       },
     ];
     // { color: { color: "white", background: "#C1361E", marginTop: "10px" }, title: "ฉุกเฉิน", value: danger.length }
@@ -225,7 +230,7 @@ const Db_overall = (props) => {
               marginTop: "-1rem",
             }}
           >
-            <Search_segment maindata={main_data} head={data2} />
+            <Search_segment maindata={main_data} head={search_head} />
           </Row>
         </Container>
       </>
