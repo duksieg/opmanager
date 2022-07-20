@@ -3,12 +3,12 @@ import 'bootstrap'
 import { Container, Row, Alert, Col, Badge, Image, Modal, Card, Button, ProgressBar, Form, Nav, Navbar, Offcanvas, NavDropdown, Carousel, ModalDialog } from 'react-bootstrap'
 import Db_overall from './db_overall'
 import Db_detail from './db_detail'
-import Db_found from './db_found'
+// import Db_found from './db_found'
 import Db_stat_report from './db_stat_report'
-import Found_must_all from "./db_found_must_all"
-import Found_add_all from "./db_found_add_all"
-import Found_must_list from "./db_found_must_list"
-import Found_add_list from "./db_found_add_list"
+// import Found_must_all from "./db_found_must_all"
+// import Found_add_all from "./db_found_add_all"
+// import Found_must_list from "./db_found_must_list"
+// import Found_add_list from "./db_found_add_list"
 import csdlogo from '../../images/csd.png'
 import Timeticking from "./timeticking"
 const Board = (props) => {
@@ -48,7 +48,7 @@ const Board = (props) => {
       
         <Db_stat_report src={props.source} all_score={props.src_score} bol={detailShow[0]}/>
         {/* <Db_detail src={props.source} bol={detailShow[0]} /> */}
-        <Db_found src={props.source} bol={foundShow[0]} />
+        {/* <Db_found src={props.source} bol={foundShow[0]} />
         <Row style={{ display: "flex", justifyContent: "center" }}>
             {props.source.map((elm) => { return <Found_must_list src={elm} bol={mustfoundShow[0]} /> })}
         </Row>
@@ -57,7 +57,7 @@ const Board = (props) => {
         <Found_add_all data={props.source} bol={additionfoundShow[0]} />
         <Row style={{ display: "flex", justifyContent: "center" }}>
             {props.source.map((elm) => { return <Found_add_list src={elm} bol={additionfoundShow[0]} /> })}
-        </Row>
+        </Row> */}
 
 
 

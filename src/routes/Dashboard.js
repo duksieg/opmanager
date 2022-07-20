@@ -16,7 +16,7 @@ export default function Dashboard() {
     const[wantedData,setWandtedData] = useState([])
     const starCountRef_score = ref(db, 'op_bell100/score')
     const pointDataRef = ref(db, 'tester1/data');
-    const wantedListRef= ref(db,'op_bell100/wantedlist')
+    const wantedListRef= ref(db,'tester1/wantedlist')
     const opName = 'op_bell100'
     let allscore
     onValue(starCountRef_score, (snapshot) => {

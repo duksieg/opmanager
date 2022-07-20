@@ -120,7 +120,7 @@ const Db_overall = (props) => {
       {
         color: { background: "#DFDED8" },
         title: "จุดตรวจค้น",
-        value: arr_target_search.length,
+        value: target_search.length,
         id: "second",
       },
       {
@@ -180,6 +180,7 @@ const Db_overall = (props) => {
     const arr_chart = arr_data.slice(0, chart_numcol);
     const arr_card = arr_data.slice(chart_numcol);
     //<!-- mock data for chart-->
+    // const [ChangeSegment, setChangeSegment] = useState(false);
     return (
       <>
         <Container fluid style={{ backgroundColor: "#13035A" }}>

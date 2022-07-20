@@ -1,11 +1,13 @@
 import { Container,Row,Col } from "react-bootstrap";
 import Rowstat from "./db_rowstat_comp";
-import Card_com from "./card_comp";
+import Card_com from "./db_catch_segment_card_comp";
 import { useState } from "react";
 
 
 const Catch_segment = (props)=>{
 const [showcard,setshow] = useState(true);
+
+console.log("catch segment",props.list)
 return(<>
 
 <Container fluid>
@@ -47,11 +49,11 @@ return(<>
     
     >
                 {showcard?props.list.map((elm) => {
-                  console.log(elm)
+                  console.log(elm[0])
                   return (
-                    <Col xs="3" md="2" lg="2"  style={{display: "inline-flex", justifyContent: "center",borderRadius:"30px", marginTop:"-0.5rem"}}>
+                    <Col xs="3" md="2" lg="2" xl="2" style={{display: "inline-flex", justifyContent: "center",borderRadius:"30px", marginTop:"-0.5rem"}}>
                       {/* onclick in Col onClick={() => setModalShow([true, elm])} */}
-                      <Card_com atb={elm} />
+                      <Card_com atb={elm[0]} />
                     </Col>
                   );
                 }):null}
