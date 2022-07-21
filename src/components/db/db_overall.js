@@ -105,7 +105,7 @@ const Db_overall = (props) => {
       {
         color: { color: "white", background: "#C1361E", marginTop: "10px" },
         title: "ฉุกเฉิน",
-        value: danger.length,
+        value: 1,//danger.length
       },
     ];
 
@@ -136,7 +136,7 @@ const Db_overall = (props) => {
         id: uuidv4(),
       },
       {
-        color: { background: "#66F530" },
+        color: { background: "#d2e7dd" },
         title: "หลังตรวจค้น",
         value: end.length,
         id: uuidv4(),

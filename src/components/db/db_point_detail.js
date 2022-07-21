@@ -24,6 +24,11 @@ ChartJS.defaults.set('plugins.datalabels', {
 
 
 export default function DB_point_detail() {
+
+
+
+
+
     const [focus_point, setfocus_point] = useState("");
     const getfocus_point = async () => {
         const refdoc = ref(firebasedb, "tester1/focus_point_detail");

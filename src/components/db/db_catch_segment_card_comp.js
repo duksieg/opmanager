@@ -2,7 +2,7 @@ import { Card, Image } from "react-bootstrap"
 import arrested from '../../images/arrested.png'
 const Card_com = (elm) => {
     const card_style = { width: '12rem', background: "#6D6E70", borderRadius: "30px", marginTop: "1rem" }
-    console.log("card_com", elm)
+    // console.log("card_com", elm)
     return (<>
             <Card style={card_style} >
             <Card.Body>
@@ -13,13 +13,9 @@ const Card_com = (elm) => {
             {elm.atb.status !== 'found' ? <></> :<>
                             <div className="card-img-overlay text-center align-items-center">
                                 <Image src={arrested} style={{ objectFit:'cover',width:'100%',marginTop:"-3rem"}}/>
-                                <label  style={{ objectFit:'cover',width:'75%',marginTop:"3rem",color:"#A71B12",fontSize:"1rem",fontWeight:"bold",border:"0.2rem double #A71B12"}}>จับที่ ABC</label>
+                                <label  style={{ objectFit:'cover',width:'75%',marginTop:"3rem",color:"#A71B12",fontSize:"1rem",fontWeight:"bold",border:"0.2rem double #A71B12",backgroundColor:"white"}}>จับที่ ABC</label>
                             </div>
-                            <div className="card-overlay text-center align-items-center">
-                            
-                           {/* <label style={{ objectFit:'cover',width:'100%',marginTop:"0.2rem"}}>adbd</label> */}
-
-                        </div></>
+</>
                         }
             <Card.Footer style={{ textAlign: "center" ,borderRadius:"30px",background:"#B4B8C7"}}>
             {/* <Card.Text style={{textAlign:"center",fontSize:"1rem",fontWeight:"bold"}}>{elm.targetName}</Card.Text> */}

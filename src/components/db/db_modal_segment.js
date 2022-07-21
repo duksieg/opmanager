@@ -11,6 +11,7 @@ import {
 
 import { firebasedb } from "../../utilities/config";
 import { v4 as uuidv4 } from 'uuid';
+import DB_point_detail from "./db_point_detail"
 // import Update_point_detail from './db-model_update_point-detail'
 const Modal_c = (props) => {
   const { show, data, onHide } = props;
@@ -91,6 +92,12 @@ const Modal_c = (props) => {
                     style={{ display: "flex" }}
                   >
                     <Topcenter_model_segment indata={in_data} />
+                  </Row>
+                  <Row
+                    className="justify-content-md-center"
+                    style={{ display: "flex" }}
+                  >
+                    <Midcenter_model_segment />
                   </Row>
                 </Container>
               </Col>
@@ -293,7 +300,19 @@ const Topcenter_model_segment = (props) => {
 };
 
 
-const Midcenter_model_segment = (props) => {};
+const Midcenter_model_segment = (props) => {
+
+return(<>
+<Container fluid>
+<Row>
+  <DB_point_detail/>
+</Row>
+
+</Container>
+</>)
+
+
+};
 
 const Right_model_segment = (props) => {
   let {item} = props;
