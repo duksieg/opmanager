@@ -8,18 +8,18 @@ const Card_com = (elm) => {
             <Card.Body>
             {/* <Card.Img variant="top" src={`${process.env.REACT_APP_SERVICE_ENDPOINT}/operation/targetimages/op_bell100/${elm.targetPic}` } style={{height:'8rem',width:'100%',objectFit:'cover'}} /> */}
             {/* {mock test} */}
-            <Card.Img variant="top" src={`${elm.atb.link_pic.replace("file/d/","uc?id=")}` } style={{height:'8rem',width:'100%',objectFit:'cover'}} />
+            <Card.Img variant="top" src={`${elm.atb.targetPic.replace("file/d/","uc?id=")}` } style={{height:'8rem',width:'100%',objectFit:'cover'}} />
             
             {elm.atb.status !== 'found' ? <></> :<>
                             <div className="card-img-overlay text-center align-items-center">
                                 <Image src={arrested} style={{ objectFit:'cover',width:'100%',marginTop:"-3rem"}}/>
-                                <label  style={{ objectFit:'cover',width:'75%',marginTop:"3rem",color:"#A71B12",fontSize:"1rem",fontWeight:"bold",border:"0.2rem double #A71B12",backgroundColor:"white"}}>จับที่ ABC</label>
+                                <label  style={{ objectFit:'cover',width:'75%',marginTop:"3rem",color:"#A71B12",fontSize:"1rem",fontWeight:"bold",border:"0.2rem double #A71B12",backgroundColor:"white"}}>จับที่ {elm.atb.pointfound}</label>
                             </div>
 </>
                         }
             <Card.Footer style={{ textAlign: "center" ,borderRadius:"30px",background:"#B4B8C7"}}>
             {/* <Card.Text style={{textAlign:"center",fontSize:"1rem",fontWeight:"bold"}}>{elm.targetName}</Card.Text> */}
-            <Card.Text style={{textAlign:"center",fontSize:"1rem",fontWeight:"bold"}}>{elm.atb.name}</Card.Text>
+            <Card.Text style={{textAlign:"center",fontSize:"1rem",fontWeight:"bold"}}>{elm.atb.targetName}</Card.Text>
             </Card.Footer>
             </Card.Body>
             </Card>

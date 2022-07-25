@@ -102,11 +102,7 @@ const Db_overall = (props) => {
         title: "รวมจับกุมได้",
         value: catched.length,
       },
-      {
-        color: { color: "white", background: "#C1361E", marginTop: "10px" },
-        title: "ฉุกเฉิน",
-        value: 1,//danger.length
-      },
+
     ];
 
     //old version use เริ่มตรวจค้น const data2=[{color:{background:"#90EFF9",marginTop:"10px"},title:"ปล่อยแถว",value:ready.length},{color:{background:"#F3FA50",marginTop:"10px"},title:"เริ่มตรวจค้น",value:start.length},{color:{background:"#F1C068",marginTop:"10px"},title:"ขณะตรวจค้น",value:current.length},{color:{background:"#66F530",marginTop:"10px"},title:"หลังตรวจค้น",value:end.length}]
@@ -218,7 +214,7 @@ const Db_overall = (props) => {
                 marginRight: "-1rem",
               }}
             >
-              <Catch_segment head={data1} list={wantedList} />
+              <Catch_segment head={data1} list={wantedList} danger_value={danger.length}/>
             </Col>
           </Row>
 

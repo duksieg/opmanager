@@ -13,6 +13,7 @@ import csdlogo from '../../images/csd.png'
 import Timeticking from "./timeticking"
 const Board = (props) => {
     //<!-- console.log(props.date_time) -->
+    // const [tick, settick] = useState("");
     const [dbShow, setdbcomp] = useState([true, "primary"]);
     const [foundShow, setfoundcomp] = useState([false, "primary"]);
     const [forceShow, setforcecomp] = useState([false, "primary"]);
@@ -38,12 +39,12 @@ const Board = (props) => {
                 </Col>
                 <Col md="auto" >
                     <Alert  className="p-3 text-center" style={{ fontSize:"2rem",fontWeight:"bold",backgroundColor: "#140E32",padding:"3rem",borderRadius:"50px", color: "#F6EFDC",marginTop:"1.7rem",width:"50rem"}}>
-                            <Timeticking/>
+                            <Timeticking />
                     </Alert>
                 </Col>
             </Row>
         </Container>
-        <Db_overall src={props.source} wanted={props.wanted} all_score={props.src_score} bol={dbShow[0]} />
+        <Db_overall src={props.source} wanted={props.wanted} all_score={props.src_score} bol={dbShow[0]}/>
         
       
         <Db_stat_report src={props.source} all_score={props.src_score} bol={detailShow[0]}/>

@@ -6,10 +6,13 @@ export default function Timeticking() {
     useEffect(()=>{
         setInterval(() => {
             setTimer(new Date().toLocaleString("th-TH", { dateStyle: "full", timeStyle: "medium" }))
+            // props.tick(timer)
         }, 1000);
         return function cleanup(){
             setTimer('')
+            
         }
+        
     },[])
     return (
         <>

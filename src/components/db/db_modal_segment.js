@@ -11,7 +11,8 @@ import {
 
 import { firebasedb } from "../../utilities/config";
 import { v4 as uuidv4 } from 'uuid';
-import DB_point_detail from "./db_point_detail"
+// import DB_point_detail from "./db_point_detail"
+import Midcenter_model_segment from "./db_model_segment_mid";
 // import Update_point_detail from './db-model_update_point-detail'
 const Modal_c = (props) => {
   const { show, data, onHide } = props;
@@ -113,7 +114,7 @@ const Modal_c = (props) => {
               md="auto"
               lg="auto"
             >
-              {props.data == null ? (
+              {/* {props.data == null ? (
                 <></>
               ) : (
                 <Link
@@ -124,7 +125,7 @@ const Modal_c = (props) => {
                 >
                   ภาพถ่าย/วิดีโอ/เอกสารที่เกี่ยวข้อง
                 </Link>
-              )}
+              )} */}
             </Row>
           </Container>
         </Modal.Body>
@@ -300,19 +301,19 @@ const Topcenter_model_segment = (props) => {
 };
 
 
-const Midcenter_model_segment = (props) => {
+// const Midcenter_model_segment = (props) => {
 
-return(<>
-<Container fluid>
-<Row>
-  <DB_point_detail/>
-</Row>
+// return(<>
+// <Container fluid>
+// <Row>
+//   <DB_point_detail/>
+// </Row>
 
-</Container>
-</>)
+// </Container>
+// </>)
 
 
-};
+// };
 
 const Right_model_segment = (props) => {
   let {item} = props;
