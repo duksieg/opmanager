@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Modal, Alert } from "react-bootstrap";
 import 'bootstrap'
 import { v4 as uuidv4 } from 'uuid'
-
+import sosimg from '../../images/sos.png'
+import RenderWantedStatus from '../../components/Reporter/wantedlist'
 
 export default function Itemreport(props) {
     const [evidenceList, setEvidence] = useState([])
     const [itemList, setItemlist] = useState([])
     const [reqList, setreqList] = useState([])
-    const [pointcode, setPointCode] = useState('')
-    const [responseSubmit, setResponseSubmit] = useState(null)
+    const [status, setStatus] = useState('')
     const [cleanedList, setCleanedList] = useState(null)
     const [modalHandle, setModal] = useState(false)
+    const [sos, setSOS] = useState(false)
+    const [wantedKey, setWantedKey] = useState(null)
 
     //initial evidence
     useEffect(() => {
@@ -37,8 +39,6 @@ export default function Itemreport(props) {
     //intial itemrows
     useEffect(() => {
         let items = props.itemdata.items
-        let pointcode = props.itemdata.target
-        setPointCode(pointcode)
         let initReq = []
         if (Array.isArray(items)) {
             items.forEach((element) => {
@@ -66,6 +66,7 @@ export default function Itemreport(props) {
                             <datalist id={'datalistOptions'}>
                                 {evidenceList.length == 0 ? '' : evidenceList}
                             </datalist>
+                            <input type={'hidden'} name="name" id="hidden"></input>
                         </div>
                         <div className="col">
                             <input type='number' className="form-control text-end" name="value" defaultValue={element == null ? '' : element.value} ></input>
@@ -78,8 +79,6 @@ export default function Itemreport(props) {
         setItemlist(relist)
     }, [reqList])
 
-
-
     const handleAddItem = () => {
         const reqItem = { uuid: uuidv4(), name: '', value: '' }
         setreqList(reqList => [...reqList, reqItem])
@@ -88,7 +87,6 @@ export default function Itemreport(props) {
 
 
     const handleValueItem = (event, uuid) => {
-        console.log('changing :' + uuid)
         setreqList(current =>
             current.map(obj => {
                 if (obj.uuid === uuid) {
@@ -107,15 +105,14 @@ export default function Itemreport(props) {
         const formData = new FormData();
         formData.append('reportList', JSON.stringify(reqList))
         formData.append('opName', props.opname)
-        formData.append('pointcode', pointcode)
+        formData.append('pointcode', props.itemdata.target)
         const requestProcess = async () => {
-            let response = fetch(`${process.env.REACT_APP_SERVICE_ENDPOINT}/reporter/submit`, {
+            let response = fetch(`${process.env.REACT_APP_SERVICE_ENDPOINT}/reporter/evidence`, {
                 method: 'POST',
                 body: formData
             })
             let result = await (await response).json()
             if (result) {
-                setResponseSubmit(result)
                 window.location.reload(true)
             }
         }
@@ -124,7 +121,6 @@ export default function Itemreport(props) {
 
 
     useEffect(() => {
-        console.log(reqList)
         let cleanedListItems = []
         reqList.forEach(element => {
             if (element.name != '' && element.value != '') {
@@ -133,51 +129,88 @@ export default function Itemreport(props) {
             }
         })
         setCleanedList(cleanedListItems)
-
     }, [reqList])
 
-    const RenderReport = () => {
-        let responseResult = responseSubmit
-        let itemResult = []
-        responseResult.forEach(element => {
-            let ptag = <p>รายการ {element.name} จำนวน  {element.value}</p>
-            itemResult.push(ptag)
-        });
-        return itemResult == [] ? <></> : itemResult
-    }
+    useEffect(() => {
+        if (sos) {
+            const formData = new FormData();
+            formData.append('opName', props.opname)
+            formData.append('pointcode', props.itemdata.target)
+            const requestProcess = async () => {
+                let response = fetch(`${process.env.REACT_APP_SERVICE_ENDPOINT}/reporter/emergency`, {
+                    method: 'POST',
+                    body: formData
+                })
+                let result = await response
+                console.log(result.status)
+                if (result.status == 200) {
+                    setSOS(true)
+
+                }
+            }
+            requestProcess()
+        }
+        return window
+    }, [sos])
+
     return (
         <>
             <div className="container">
                 <form>
-                    <div className="text-center">
-                        <div className="row">
-                            จุดเข้าค้น {props.point}
+                    {sos ? <Alert variant={"danger"} ket={'danger'} onClose={() => setSOS(false)} dismissible >ท่านได้ร้องขอความช่วยเหลือไปยังศูนย์แล้ว</Alert> : ""}
+                    <div className="card mt-2">
+                        <div className="card-header justify-content-center d-flex">
+                            <div className="bg-light">
+                                จุดเข้าค้น {props.itemdata.target}
+                                <img className="btn" src={sosimg} onClick={() => setSOS(true)} ></img>
+                            </div>
                         </div>
-                        <div className="row" >
-                            <div className="d-inline-flex justify-content-between my-1">
-                                <div className="col">
-                                    ลำดับ
+                        <div className="card-body text-center">
+                            <div className="d-flex justify-content-center">
+                                <label className="col-form-label mx-2" htmlFor='statuscheck'> สถานะเข้าค้น </label>
+                                <select className="form-select w-auto text-center" id='statuscheck' onChange={(e) => { setStatus(e.target.value) }}>
+                                    <option selected>เลือกสถานะ</option>
+                                    <option value="ปล่อยแถว">ปล่อยแถว</option>
+                                    <option value="ขณะเข้าค้น">ขณะเข้าค้น</option>
+                                    <option value="ทำบันทึก">ทำบันทึก</option>
+                                </select>
+                            </div>
+
+                            <div className="row mt-3" >
+                                <div className="card">
+                                    <div className="card-header">สิ่งของตรวจยึด</div>
+                                    <div className="d-inline-flex justify-content-between my-1">
+                                        <div className="col">
+                                            ลำดับ
+                                        </div>
+                                        <div className="col col-sm-auto col-md-8">
+                                            รายการ
+                                        </div>
+                                        <div className="col">
+                                            จำนวน
+                                        </div>
+                                    </div>
+                                    {itemList == null ? '' : itemList}
+                                    <div className="btn btn-dark" onClick={handleAddItem}>
+                                        เพิ่มรายการ
+                                    </div>
+                                    <div className="btn btn-primary w-auto text-center text-wrap mt-2" onClick={() => setModal(true)}>
+                                        ส่งข้อมูลตรวจยึด
+                                    </div>
                                 </div>
-                                <div className="col col-sm-auto col-md-8">
-                                    รายการ
-                                </div>
-                                <div className="col">
-                                    จำนวน
+                            </div>
+                            <div className="row mt-3">
+                                <div className="card">
+                                    <div className="card-header">
+                                        ผู้ต้องหาตามหมายจับ
+                                    </div>
+                                    <RenderWantedStatus wantedlist={props.wantedlist} pointcode={props.itemdata.target}></RenderWantedStatus>
+
                                 </div>
                             </div>
                         </div>
-                        <div className="container">
-                            {itemList == null ? '' : itemList}
-                            <div className="row">
-                                <span className="btn btn-dark" onClick={handleAddItem}>เพิ่มรายการ</span>
-                            </div>
-                        </div>
                     </div>
-                    <div className="row justify-content-center">
-                        <div className="btn btn-dark w-25 text-center" onClick={() => setModal(true)}>
-                            ยืนยันส่งข้อมูล
-                        </div>
-                    </div>
+
                 </form>
                 <Modal show={modalHandle} onHide={() => setModal(false)} >
                     <Modal.Header>
@@ -187,6 +220,7 @@ export default function Itemreport(props) {
                     <Modal.Body>
                         รายการที่ไม่มีการกรอกข้อมูลไม่ครบ จะไม่นำมาใช้
                         <hr />
+                        <div>จุดค้นที่ {props.itemdata.target} สถานะ : {status}</div>
                         <div>{cleanedList == null ? '' : cleanedList}</div>
                     </Modal.Body>
                     <Modal.Footer>
